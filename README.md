@@ -52,6 +52,10 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 
 没奈何，Vim与Emacs取其一。
 
+Vim高效快速，Emacs功能强大*且自带帮助手册，自行选择。
+
+注：Emacs甚至可以用于煮咖啡，不是玩笑话。
+
 注：google中文输入法无法在termux内输入中文。
 
 注：使用Vim或Emacs时按手机返回键，点按呼出键盘将不会生效，需点按屏幕左边滑出的'keyboard'按钮。
@@ -59,6 +63,10 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 尽管vim老手从不用上下左右键，但我等新手还是少不了它的。
 
 酷安某用户修改了termux的特殊键，增加了上下左右键，修改版apk我放在仓库里了，有需要自己下。
+
+ * 横屏编辑
+ 
+除非使用平板，否则很难兼顾特殊键与中文。 
 
 3.选择软件源
 
@@ -98,13 +106,13 @@ https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,ai
 
 termux-tools:bashscript工具集，包含`termux-fix-shebang termux-info termux-open termux-open-url termux-reload-settings termux-setup-storage termux-wake-lock termux-wake-unlock`
 
-termux-api:与Android交互需要使用的工具集。
+termux-api:与Android交互需要使用的工具集，powered by bashscript。
 
 termux-apt-repo:
 
 termux-create-package:字面意思
 
-termux-am:apk文件，未知作用，在`$PREFIX/libexec/termux-am`目录下。
+termux-am:apk文件，在`$PREFIX/libexec/termux-am`目录下。是am命令的Android8.0特别版。
 
 termux-elf-cleaner：
 
@@ -124,7 +132,7 @@ termux自带apt，基于apt封装了一个pkg命令
 
 termux根目录为`/data/data/com.termux/files`
 
-内有home和usr两个目录
+内有home和usr两个目录，对应的变量是`$HOME`和`$PREFIX`。
 
 如果觉得这样的目录结构不习惯，可以执行
 
@@ -338,19 +346,21 @@ go get $repourl
  
 
 
-[附录一]获得读写sdcard权限
+[附录]获得读写sdcard权限
 
 `termux-setup-storage`获得sdcard读写权限。
 
 `ln -s target linkname`建立软链方便管理。
 
-[附录二]proot运行Linux发行版
+[附录]proot运行Linux发行版
 
 termux打包了proot，github上的termux用户们则热心地编写了一系列用于运行发行版的bashscript。
 
 目前有Fedora,kali,Arch,debian可以选择，当然……失败率挺高的。
 
-[附录三]改造termux
+连接图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
+
+[附录]改造termux
  
 注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
 
@@ -358,7 +368,9 @@ termux打包了proot，github上的termux用户们则热心地编写了一系列
 
 例如，为bash上一把密码锁。
 
-[附录四]编译C源码文件
+现成的实现在此https://github.com/myfreess/termux-bashlock
+
+[附录]编译C源码文件
 
 Termux上编译最大的痛苦之处是，make和autoconf都不能正常工作！
 
@@ -374,6 +386,25 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 
 当然Linux一贯的特点是兼容并蓄，所以安装后它会建立名为`cc`的符号键接指向自身，以适应使用gcc的一些应用。
 
+当然，一般我们不会直接使用clang进行编译，GNU/Linux*上的传统编译管理器是make。
+
+注：既然理查德大爷希望我们用GNU/Linux这个词，那我们应该尊重他的意见。
+
+[附录]hacking
+
+见仓库内
+
+[附录]与Android交互
+
+这可能是Termux最强大的功能，需要以下支持:
+
+ * [Termux:api]Termux扩展包。
+ 
+ * [termux-api]用bashscript编写的，方便用户使用的工具集。
+ 
+其实Android应用一直以来都支持命令行交互，你可以不用默认工具集，自己重新编写脚本来实现短信发送一类的功能。但这样做并不方便，最好还是在用户脚本内调用这些工具集完成所需功能。
+
+目现已经有人实现了基于短信的交互式shell，异常强大！
 
 
 
