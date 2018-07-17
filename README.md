@@ -62,7 +62,7 @@ gpg error这种东西不要关心！
 
 据说通过更换第三方源可以安装metasploit，但我没找到。印象里在官方wiki见过一次。
 
-https://github.com/termux/termux-root-packages这个仓库内有编译libusb,aircrack-ng,tcpdump的脚本
+https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,aircrack-ng,tcpdump的脚本
 
 同时termux官方给出了一个python脚本，帮助用户构建自己的deb包。
 
@@ -72,5 +72,19 @@ https://github.com/termux/termux-root-packages这个仓库内有编译libusb,air
 
 没错，都可以做到!
 
-但这样的功能一般依靠
+但这样的功能一般依靠github上其他人创建的repo才能做到，要学会git,python,ruby,golang的基础用法。
+
+ * git基本用法
+ 
+ git clone $repourl $dirname 
+ 
+ 复制repo到本地目录
+ 
+ cd $dirname&&git pull
+ 
+ 更新repo
+ 
+ * python(2或3)
+ 
+ 
  
