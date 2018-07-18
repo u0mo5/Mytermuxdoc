@@ -10,7 +10,8 @@ termux的默认shell是bash，启动文件为`$PREFIX/etc/bash.bashrc`
 
 修改方法：`nano $PREFIX/etc/bash.bashrc`，然后修改提示符变量PS1为
 
-```PS1='[\w]'
+```shell
+PS1='[\w]'
 ```
 
 `\w`意为当前路径，必须处于单引号包裹中。
@@ -45,7 +46,8 @@ termux根目录为`/data/data/com.termux/files`
 
 如果觉得这样的目录结构不习惯，可以执行
 
-```pkg install proot -y
+```shell
+pkg install proot -y
 termux-chroot
 ```
 
@@ -61,7 +63,7 @@ termux的官方源软件包齐全，但没有打包好的python和ruby依赖包�
 
 某些源包含openjdk这类官方源中不包含的软件包(Extra源)
 
-在`$PREFIX/etc/apt/source.list`加入一行 'deb https://termux.xeffyr.ml/ extra main x11'
+在`$PREFIX/etc/apt/source.list`加入一行`deb https://termux.xeffyr.ml/ extra main x11`
 
 gpg error这种东西不要关心！
 
@@ -89,12 +91,14 @@ termux自带apt，基于apt封装了一个pkg命令
 
  * git基本用法
  
-```git clone $repourl $dirname
+```shell
+git clone $repourl $dirname
 ```
 
 复制repo到本地目录
  
-```cd $dirname&&git pull
+```shell
+cd $dirname&&git pull
 ```
  
 更新repo
@@ -135,7 +139,8 @@ pip是一个自动化的python依赖包管理器
 
 同理，使用python2编写的模块只能用pip2安装
 
-```pip install $ModuleName
+```shell
+pip install $ModuleName
 ```
 
 若repo目录内包含requirements.txt,直接`pip install -r requirements.txt`即可
@@ -180,7 +185,8 @@ pip是一个自动化的python依赖包管理器
  
  * 安装及使用
  
-```gem install bundler
+```shell
+gem install bundler
 cd $repodir&&bundle install
 ```
 
@@ -203,7 +209,8 @@ bundler对tmp目录无写权限。chmod 777是不可行的，要用root权限来
  
  * nodejs
  
-```node xxx.js 
+```shell
+node xxx.js 
 cd $repodir&&npm install
 ```
  
@@ -219,7 +226,8 @@ termux-exec可以使termux适应Linux风格的shebang。
  
 go是跨平台的编译型语言
  
-```apt install golang
+```shell
+apt install golang
 go get $repourl
 ```
 
