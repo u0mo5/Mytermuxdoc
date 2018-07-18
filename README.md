@@ -231,7 +231,7 @@ go get $repourl
  
  * 一些工具
 
-[Baidupcsgo]()百度网盘不限速下载 
+[Baidupcsgo](https://github.com/iikira/BaiduPCS-Go)百度网盘不限速下载 
  
  
 6.文本编辑
