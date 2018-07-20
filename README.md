@@ -65,6 +65,12 @@ termux的官方源软件包齐全，但没有打包好的python和ruby依赖包�
 
 在`$PREFIX/etc/apt/source.list`加入一行`deb https://termux.xeffyr.ml/ extra main x11`
 
+简单操作一下：
+
+```shell
+echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/source.list
+```
+
 gpg error这种东西不要关心！
 
  * 注：extra源的编译脚本与补丁由github某用户提供
