@@ -42,6 +42,8 @@ PS1='[\w]'
  
  注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
  
+ 注:termux中使用bash使用的是非登录shell,使用zsh则启动一个登录shell
+ 
 2.选择文本编辑器
 
 Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
@@ -102,7 +104,7 @@ termux-apt-repo:
 
 termux-create-package:字面意思
 
-termux-am:一个apk文件，未知作用，在`$PREFIX/libexec/termux-am`目录下。
+termux-am:apk文件，未知作用，在`$PREFIX/libexec/termux-am`目录下。
 
 termux-elf-cleaner：
 
@@ -127,11 +129,17 @@ termux根目录为`/data/data/com.termux/files`
 如果觉得这样的目录结构不习惯，可以执行
 
 ```shell
-pkg install proot -y
+apt install proot -y
 termux-chroot
 ```
 
 但这对性能有一定损伤。
+
+[+]启动效果
+
+一般打开Termux时会显示`$PREFIX/etc/motd`中的文字，可自行更改。
+
+也有很多人在bashrc中使用figlet等工具制作启动时的艺术字效果。
 
 [+]获得并使用源码
 
@@ -152,9 +160,25 @@ git clone $repourl $dirname
 但中国网络环境出了名的不好，一般大型项目传输中途会断流！
 
 使用shadowsocks成本又高，最好还是用ssh拉取源码。
+
+如果希望使用ssh拉取源码，那么应该注册一个github账号，创建自己的ssh密钥，并将公钥提交到github。
+
+```shell
+apt install openssh
+ssh-keygen
+#接着输入你的ID
+#格式为Email@github.com
+cat $HOME/.ssh/id_rsa.pub
+#输出的内容就是你的公钥
+```
+
+将公钥提交到github需要在浏览器内完成，此处不作演示。
+
+想略为深入的学习git，建议看[廖雪峰的git教程]
  
 ```shell
-cd $dirname&&git pull
+cd $dirname
+git pull
 ```
  
 更新repo
@@ -228,6 +252,8 @@ pip install $ModuleName
  
  [5]打包为whl文件
  
+注：也有人说只要clang装好就没有问题，太扯了…… 
+ 
  * 为何会这样？
  
  termux尽管基于debootstrap,官方行事却有Arch之风，连保留旧版软件包都不愿意。为python依赖打deb包啥的更是不可能了
@@ -252,7 +278,8 @@ pip install $ModuleName
  
 ```shell
 gem install bundler
-cd $repodir&&bundle install
+cd $repodir
+bundle install
 ```
 
  
@@ -276,7 +303,8 @@ bundler对tmp目录无写权限。chmod 777是不可行的，要用root权限来
  
 ```shell
 node xxx.js 
-cd $repodir&&npm install
+cd $repodir
+npm install
 ```
  
  * 何为shebang?
@@ -306,7 +334,7 @@ go get $repourl
 
 [Baidupcsgo](https://github.com/iikira/BaiduPCS-Go)百度网盘不限速下载 
  
-you-get 强大的视频下载器，支持全球大多数视频网站，`pip install you-get`即可安装。
+[you-get] 强大的视频下载器，支持全球大多数视频网站，`pip install you-get`即可安装。
  
 
 
@@ -328,7 +356,25 @@ termux打包了proot，github上的termux用户们则热心地编写了一系列
 
 前面提到了termux上一些特色package其实是bashscript，那么，可以通过自己编写脚本来实现一些自定义功能
 
-例如，为bash上把锁。
+例如，为bash上一把密码锁。
+
+[附录四]编译C源码文件
+
+Termux上编译最大的痛苦之处是，make和autoconf都不能正常工作！
+
+看过Termux官方的package仓库之后，深感软件源维护者之难与gentoo用户初始安装之苦!
+
+别的不说，为configure写补丁这事已经让我深恶痛绝(脚本太大了！)
+
+README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能把软件装好！
+
+事实上大多数时候没这么好的事。
+
+言归正传，Termux上的c编译器是`clang`，比gcc更轻量。
+
+当然Linux一贯的特点是兼容并蓄，所以安装后它会建立名为`cc`的符号键接指向自身，以适应使用gcc的一些应用。
+
+
 
 
  
