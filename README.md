@@ -18,7 +18,13 @@ PS1='[\w]'
 
 `\w`意为当前路径，必须处于单引号包裹中。
 
-关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
+#关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
+
+#关于bash的内置命令(exec ailas …)也不多说
+
+#Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
+
+#还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
 
 当然我们有更好的选择，zsh和fish是很受新手欢迎的两个shell
 
@@ -26,7 +32,7 @@ PS1='[\w]'
  
  [1]显示git仓库的状态(生产力加成)
  
- [2]大量的主题，字体与配色
+ [2]大量的主题，字体,插件与配色
  
  [3]强大的命令、路径补全能力
  
@@ -398,13 +404,24 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 
 这可能是Termux最强大的功能，需要以下支持:
 
- * [Termux:api]Termux扩展包。
+ * [Termux:API]Termux扩展包。
  
  * [termux-api]用bashscript编写的，方便用户使用的工具集。
  
 其实Android应用一直以来都支持命令行交互，你可以不用默认工具集，自己重新编写脚本来实现短信发送一类的功能。但这样做并不方便，最好还是在用户脚本内调用这些工具集完成所需功能。
 
-目现已经有人实现了基于短信的交互式shell，异常强大！
+目前已经有人实现了基于短信的交互式shell，异常强大！
+
+注:用了修改版Termux就用不了这个扩展包了，因为Apk签名不统一。
+
+[附录]Neoterm
+
+Termux分支，特点是兼容Google中文输入法，自带oh-my-zsh安装脚本，Adb与Fastboot,以及强到爆炸的……
+
+Xorg及图形环境。
+
+目前测试版已经有图形会话选项了，但尚不稳定。
+
 
 
 
