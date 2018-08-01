@@ -20,7 +20,7 @@ PS1='[\w]'
 
 #关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
 
-#关于bash的内置命令(exec ailas …)也不多说
+#关于bash的内置命令(exec alias …)也不多说
 
 #Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
@@ -44,6 +44,12 @@ PS1='[\w]'
  
  安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
  
+ 插件自行选择吧！
+ 
+ 效果图上一张：
+ 
+![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
+ 
  注：可通过输入`exit 0`来关闭一个shell会话
  
  注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
@@ -58,9 +64,13 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 
 没奈何，Vim与Emacs取其一。
 
-Vim高效快速，Emacs功能强大*且自带帮助手册，自行选择。
+Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。
 
-注：Emacs甚至可以用于煮咖啡，不是玩笑话。
+ * 论Emacs的全能性
+
+Emacs在设计之初的目标就是：提供一个完整的系统工具集所应有的功能(从浏览器到游戏)，又因为Emacs Lisp的出现，它可以让用户简单地对它进行扩展。
+
+例如Emacs其实可以煮咖啡(coffee.el)，不是玩笑话，详情可以在互联网上找到。
 
 注：google中文输入法无法在termux内输入中文。
 
@@ -123,6 +133,7 @@ termux-am:apk文件，在`$PREFIX/libexec/termux-am`目录下。是am命令的An
 termux-elf-cleaner：
 
 termux-exec：下面介绍
+
 
 4.软件包管理
 
@@ -392,13 +403,25 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 
 当然Linux一贯的特点是兼容并蓄，所以安装后它会建立名为`cc`的符号键接指向自身，以适应使用gcc的一些应用。
 
-当然，一般我们不会直接使用clang进行编译，GNU/Linux*上的传统编译管理器是make。
+当然，一般我们不会直接使用clang进行编译，GNU/Linux上的传统编译管理器是make。
 
-注：既然理查德大爷希望我们用GNU/Linux这个词，那我们应该尊重他的意见。
+注：GNU/Linux是Linux的正式名称(但不是官方名称)
+
+一般来说大型的C程序都需要先将源码文件编译为对象文件，再从对象文件生成Elf可执行文件(Linux上是这样做的)。
+
+当编译时需要加入一些特殊的选项时，手动编译就不太合适了。
+
+于是开发者会编写一个Makefile，你解开源码包并进入源码目录，运行make完成编译，然后`make install`，安装就完成了。
+
+然而仅靠一个Makefile还是适应不了各平台的差别，于是有了Autoconf这类移植工具。
+
+注：这里说的各平台只包括Unix系的操作系统，windows没那么好解决。
+
+注：现代的gcc支持多种语言的编译，而现代的make甚至可以自动化完成Docker容器的创建(这个说法可能不对)和运行。
 
 [附录]hacking
 
-见仓库内
+[Termux-hacking](https://github.com/myfreess/Mytermuxdoc/blob/master/Termux-hacking.md)
 
 [附录]与Android交互
 
@@ -421,6 +444,12 @@ Termux分支，特点是兼容Google中文输入法，自带oh-my-zsh安装脚�
 Xorg及图形环境。
 
 目前测试版已经有图形会话选项了，但尚不稳定。
+
+[附录]am命令
+
+am全称activity manager，你能使用am去模拟各种系统的行为，例如去启动一个activity，强制停止进程，发送广播进程，修改设备屏幕属性等等。
+
+就是Android上的应用调试器，给开发者用的。
 
 
 
