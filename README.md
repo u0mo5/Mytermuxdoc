@@ -4,7 +4,9 @@ termux不完全指南
 
 1.选择shell
 
-termux的默认shell是bash，启动文件为`$PREFIX/etc/bash.bashrc`
+termux的默认shell是bash(但Termux还默认安装了dash)，启动文件为`$PREFIX/etc/bash.bashrc`
+
+注：这只是一种简单的说法，bash启动文件的详细情况见下文。
 
 默认只定义了bash提示符为`$`,不包括当前路径，未免不太方便
 
@@ -25,6 +27,8 @@ PS1='[\w]'
 #Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
 #还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
+
+#当然缺不了[Termux官方wiki](https:wiki.termux.com/wiki/Main_Page)
 
 当然我们有更好的选择，zsh和fish是很受新手欢迎的两个shell
 
@@ -49,12 +53,38 @@ PS1='[\w]'
  效果图上一张：
  
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
+
+ * fish的安装与使用
  
- 注：可通过输入`exit 0`来关闭一个shell会话
+详情请见Termux官方wiki。
+
+[Termux Shell列表]
+
+ * bash
  
- 注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
+ * zsh
  
- 注:termux中使用bash使用的是非登录shell,使用zsh则启动一个登录shell
+ * fish
+ 
+ * dash
+ 
+ * tcsh
+ 
+ * Xonsh 
+ 
+更多信息可见[Termux wiki:Shells](https://wiki.termux.com/wiki/Shells) 
+
+注：可通过输入`exit 0`来关闭一个shell会话
+ 
+注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
+ 
+ * Termux启动的是登录Shell吗？
+ 
+从'echo $0'的输出来看，bash以非登录shell的模式启动。
+
+但从bash的真正启动文件'$PREFIX/etc/profile'来看，bash以登录模式启动。并且Termux打开时启动的第一个程序是'login'(通过内核调用'exec()'启动)。
+
+注：Termux的bash启动文件'profile'中source了'$PREFIX/etc/bash.bashrc'和'$HOME/.bashrc'，etc目录内的'bash.bashrc'先于home目录内的'.bashrc'被读取。
  
 2.选择文本编辑器
 
@@ -64,13 +94,19 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 
 没奈何，Vim与Emacs取其一。
 
-Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。
+Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。Neovim比vim更美观，也作为选择之一。
+
+Termux官方列出了所有Termux上可用的文本编辑器，详情见wiki。
 
  * 论Emacs的全能性
 
 Emacs在设计之初的目标就是：提供一个完整的系统工具集所应有的功能(从浏览器到游戏)，又因为Emacs Lisp的出现，它可以让用户简单地对它进行扩展。
 
-例如Emacs其实可以煮咖啡(coffee.el)，不是玩笑话，详情可以在互联网上找到。
+例如Emacs其实可以煮咖啡(coffee.el)，不是玩笑话，详情可搜索词条"Emacs煮咖啡"。
+
+ * 退出Vim
+
+按下'ESC'键，进入命令模式，输入':wq'将保存文件并退出Vim。 
 
 注：google中文输入法无法在termux内输入中文。
 
@@ -90,7 +126,7 @@ termux的官方源软件包齐全，但没有打包好的python和ruby依赖包�
 
 像pynacl这类包含c库依赖的模块一般无法正常安装。
 
-同时官方源不保留旧版本软件包。想安旧版可以试试`Tuna`，这是由中国某大学维护的软件源，支持Termux。
+同时官方源不保留旧版本软件包。想安旧版可以试试`Tuna`，这是由中国某大学维护的软件源，支持Termux。一还有由xeffyr维护的Termux Mirror。
 
 某些源包含openjdk这类官方源中不包含的软件包(Extra源)
 
@@ -104,13 +140,27 @@ echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/source.li
 
 gpg error这种东西不要关心！
 
- * 注：extra源的编译脚本与补丁由github某用户提供
+ * 注：extra源的编译脚本与补丁由github用户xeffyr提供。
 
-据说通过更换第三方源可以安装metasploit，但我没找到。印象里在官方wiki见过一次。
+通过更换第三方源甚至可以安装metasploit，在官方wiki可见。
 
-https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,aircrack-ng,tcpdump的脚本
+https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,aircrack-ng,tcpdump的脚本。
 
 同时termux官方给出了一个python脚本，帮助用户构建自己的deb包。
+
+ * Termux第三方源列表
+
+[1]Tuna镜像源
+
+[2]由xeffyr维护的旧版本源
+
+[3]由xeffyr维护的Extra源
+
+[4]由Auxilus维护的metasploit源
+
+[5]由Grimler91维护的rootpackage源
+
+[6]its-pointless
 
  * termux特色package
 
@@ -133,6 +183,10 @@ termux-am:apk文件，在`$PREFIX/libexec/termux-am`目录下。是am命令的An
 termux-elf-cleaner：
 
 termux-exec：下面介绍
+
+ * 手动安装deb包
+ 
+dpkg -i ./xxx.deb 
 
 
 4.软件包管理
@@ -165,6 +219,18 @@ termux-chroot
 一般打开Termux时会显示`$PREFIX/etc/motd`中的文字，可自行更改。
 
 也有很多人在bashrc中使用figlet等工具制作启动时的艺术字效果。
+
+[+]在Android中调用Termux编辑器
+
+```shell
+mkdir ~/bin
+cd ~/bin
+ln -s $PREFIX/bin/nano termux-file-editor
+```
+
+我用nano，vim用户与Emacs用户可如法炮制。
+
+完成后在Termux的home目录内生成downloads目录，编辑完成后文件将保存在这个目录。
 
 [+]获得并使用源码
 
@@ -263,19 +329,7 @@ pip install $ModuleName
  
  [2]此模块需连接C库。
  
- 这种情况糟糕至极。修复没有固定步骤，但这些事是必须做的。
- 
- [1]使用`pip download $ModuleName` 下载tar.gz文件
- 
- 注:可能还会有些whl文件，不管它。那是可以直接用于安装的python模块文件
- 
- [2]解压，前往此模块中包含C依赖库的目录(一般以lib为前三个字母)
- 
- [3]检查Makefile.in,Makefile.ac等自动化编译所需的文件
- 
- [4]编写补丁
- 
- [5]打包为whl文件
+ 这种情况不好解决。
  
 注：也有人说只要clang装好就没有问题，太扯了…… 
  
