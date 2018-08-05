@@ -28,35 +28,33 @@ PS1='[\w]'
 
 #还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
 
-#当然缺不了[Termux官方wiki](https:wiki.termux.com/wiki/Main_Page)
+#当然缺不了Termux官方wiki:https:wiki.termux.com/wiki/Main_Page
 
 当然我们有更好的选择，zsh和fish是很受新手欢迎的两个shell
 
- * zsh有什么优点？
+ * zsh安装及配置
  
- [1]显示git仓库的状态(生产力加成)
+安装:`apt install zsh`
+
+zsh设计思想相当Linux,不写配置还不如用bash
  
- [2]大量的主题，字体,插件与配色
+但是zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
  
- [3]强大的命令、路径补全能力
+termux有一键安装oh-my-zsh的脚本，github自寻
  
- * 如何安装？
+安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
  
- zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
+插件自行选择吧！
  
- termux有一键安装oh-my-zsh的脚本，github自寻
- 
- 安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
- 
- 插件自行选择吧！
- 
- 效果图上一张：
+效果图上一张：
  
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
 
  * fish的安装与使用
  
-详情请见Termux官方wiki。
+安装:`apt install fish`
+
+fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
 [Termux Shell列表]
 
@@ -135,10 +133,9 @@ termux的官方源软件包齐全，但没有打包好的python和ruby依赖包�
 简单操作一下：
 
 ```shell
+apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
 echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/source.list
 ```
-
-gpg error这种东西不要关心！
 
  * 注：extra源的编译脚本与补丁由github用户xeffyr提供。
 
@@ -220,6 +217,12 @@ termux-chroot
 
 也有很多人在bashrc中使用figlet等工具制作启动时的艺术字效果。
 
+[+]配色方案和字体
+
+将字体文件复制到$HOME/.termux内，重命名为font.ttf，重启生效。
+
+配色方案如法炮制，复制后重命名为colors.properties。
+
 [+]在Android中调用Termux编辑器
 
 ```shell
@@ -256,9 +259,7 @@ git clone $repourl $dirname
 
 ```shell
 apt install openssh
-ssh-keygen
-#接着输入你的ID
-#格式为Email@github.com
+ssh-keygen -t rsa -C "youremail@example.com"
 cat $HOME/.ssh/id_rsa.pub
 #输出的内容就是你的公钥
 ```
@@ -329,7 +330,7 @@ pip install $ModuleName
  
  [2]此模块需连接C库。
  
- 这种情况不好解决。
+ 先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则需自行解决。 
  
 注：也有人说只要clang装好就没有问题，太扯了…… 
  
