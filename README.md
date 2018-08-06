@@ -159,6 +159,10 @@ https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,ai
 
 [6]its-pointless
 
+ * 后缀为dev的deb包是什么？
+
+pkg-config文件与include文件。
+
  * termux特色package
 
 包括termux-tools,termux-exec,tsu等
@@ -330,8 +334,12 @@ pip install $ModuleName
  
  [2]此模块需连接C库。
  
- 先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则需自行解决。 
- 
+先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则需自行解决。 建议先在github的issues区自行搜索。
+
+`apt install lib*dev`是个好方法。
+
+当没有可用方案时，可以自行创建一个issues，有时实际情况的确难以由用户自行解决。
+
 注：也有人说只要clang装好就没有问题，太扯了…… 
  
  * 为何会这样？
