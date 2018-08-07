@@ -56,6 +56,8 @@ termux有一键安装oh-my-zsh的脚本，github自寻
 
 fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
+自写oh-my-fish安装脚本:`bash $(curl https://raw.githubusercontent.com/myfreess/Firebash/master/fishsetup.sh)`
+
 [Termux Shell列表]
 
  * bash
@@ -334,7 +336,9 @@ pip install $ModuleName
  
  [2]此模块需连接C库。
  
-先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则需自行解决。 建议先在github的issues区自行搜索。
+先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则寻找报错信息中有无`include<xxx.h>`。 若有，则安装对应的dev包和lib包即可。
+
+仍无法正确安装，则建议先在github的issues区自行搜索。
 
 `apt install lib*dev`是个好方法。
 
