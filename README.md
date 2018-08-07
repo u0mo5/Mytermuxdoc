@@ -482,10 +482,6 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 
 注：现代的gcc支持多种语言的编译，而现代的make甚至可以自动化完成Docker容器的创建(这个说法可能不对)和运行。
 
-[附录]hacking
-
-[Termux-hacking](https://github.com/myfreess/Mytermuxdoc/blob/master/Termux-hacking.md)
-
 [附录]与Android交互
 
 这可能是Termux最强大的功能，需要以下支持:
