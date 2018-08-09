@@ -229,6 +229,10 @@ termux-chroot
 
 配色方案如法炮制，复制后重命名为colors.properties。
 
+[+]More
+
+Termux中长按屏幕，点按'More'出现更多选项。
+
 [+]在Android中调用Termux编辑器
 
 ```shell
@@ -385,9 +389,9 @@ bundle install
  
  * 常见问题
  
-版本错误，如使用ruby2.5的gem安装使用ruby2.4编写的模块，必出问题。
- 
-C库依赖……仍用运行发行版后`apt install ruby-$module`解决。官方有rbnacl-libsodium的补丁，可以自行patch后安装(但要在之前自行编译ruby2.4并安装)。
+C库依赖……仍用运行发行版后`apt install ruby-$module`解决，如果想折腾，自己认真看看报错即可，仍然建议多看Termux的issues。
+
+注：google翻译是个好东西。
  
 bundler对tmp目录无写权限。chmod 777是不可行的，要用root权限来运行bundler(并非好方案)。
  
