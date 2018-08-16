@@ -56,7 +56,7 @@ termux有一键安装oh-my-zsh的脚本，github自寻
 
 fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
-自写oh-my-fish安装脚本:`curl https://raw.githubusercontent.com/myfreess/Firebash/master/fishsetup.sh`
+自写oh-my-fish安装脚本:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh`
 
 [Termux Shell列表]
 

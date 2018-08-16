@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-#首先填加源
+#增加第三方源
 #metasploit
 apt install curl
 curl -O https://Auxilus.github.io/auxilus.key
@@ -22,20 +22,3 @@ mkdir -p $PREFIX/etc/apt/sources.list.d
 echo "deb https://grimler.se root stable" > $PREFIX/etc/apt/sources.list.d/termux-root.list
 #update
 apt update
-#link
-mkdir ~/bin
-cd ~/bin
-if [ -f $PREFIX/bin/nano ]; then
-   ln -s $PREFIX/bin/nano termux-file-editor
-else
-    echo 'What editor are you use?emacs or vim?(e/v)'
-    echo '你使用emacs还是vim?(e/v)'
-    read editor
-    case $editor in
-        e)
-            ln -s $PREFIX/bin/emacs termux-file-editor
-          ;;
-        v)
-            ln -s $PREFIX/bin/vim termux-file-editor
-    esac
-fi
