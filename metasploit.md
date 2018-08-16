@@ -14,5 +14,6 @@ echo 'deb https://termux.xeffyr.ml/ stable main' >> $PREFIX/etc/apt/sources.list
 apt update
 apt install ruby=2.4.5 ruby-dev=2.4.5
 ```
+这一步并非必需。
 
 2.下载源码。

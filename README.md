@@ -56,7 +56,7 @@ termux有一键安装oh-my-zsh的脚本，github自寻
 
 fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
-自写oh-my-fish安装脚本:`bash $(curl https://raw.githubusercontent.com/myfreess/Firebash/master/fishsetup.sh)`
+自写oh-my-fish安装脚本:`curl https://raw.githubusercontent.com/myfreess/Firebash/master/fishsetup.sh`
 
 [Termux Shell列表]
 
@@ -459,12 +459,6 @@ termux打包了proot，github上的termux用户们则热心地编写了一系列
 现成的实现在此https://github.com/myfreess/termux-bashlock
 
 [附录]编译C源码文件
-
-Termux上编译最大的痛苦之处是，make和autoconf都不能正常工作！
-
-看过Termux官方的package仓库之后，深感软件源维护者之难与gentoo用户初始安装之苦!
-
-别的不说，为configure写补丁这事已经让我深恶痛绝(脚本太大了！)
 
 README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能把软件装好！
 
