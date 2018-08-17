@@ -7,8 +7,7 @@ apt-key add auxilus.key
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
 #fix missing
 #暂时无法修复
-pkg install wget
-$PREFIX/bin/wget https://its-pointless.github.io/setup-pointless-repo.sh
+curl -O https://its-pointless.github.io/setup-pointless-repo.sh
 bash setup-pointless-repo.sh
 #mirror&&extra
 apt install gnupg-curl dirmngr
