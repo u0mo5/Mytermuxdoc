@@ -83,7 +83,7 @@ fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有�
  
 更多信息可见[Termux wiki:Shells](https://wiki.termux.com/wiki/Shells) 
 
-注：可通过输入`exit 0`来关闭一个shell会话
+注：可通过输入`exit 0`来关闭一个shell会话，Ctrl-d也可。
  
 注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
  
@@ -238,6 +238,10 @@ termux自带apt，基于apt封装了一个pkg命令
 
  
 ###########
+[+]拉取并使用源码文件
+
+https://github.com/myfreess/Mytermuxdoc/blob/master/repo.md
+
 
 [+]目录结构
 

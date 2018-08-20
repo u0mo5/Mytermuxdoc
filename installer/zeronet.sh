@@ -1,7 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 apt install clang python2 python2-dev libevent libcrypt-dev libcrypt
-pip2 install msgpack gevent
-echo 'module installed'
+pip2 install msgpack gevent&&echo 'module installed'
 cd $PREFIX/share
 git clone https://gitee.com/wenqiangchina/ZeroNet
 mv ZeroNet zeronet
