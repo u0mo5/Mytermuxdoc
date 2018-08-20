@@ -40,7 +40,8 @@ zsh设计思想相当Linux,不写配置还不如用bash
  
 但是zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
  
-termux有一键安装oh-my-zsh的脚本，github自寻
+termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cabbagec/termux-ohmyzsh，甚至可以更换终端配色与字件！
+
  
 安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
  
@@ -57,6 +58,14 @@ termux有一键安装oh-my-zsh的脚本，github自寻
 fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
 自写oh-my-fish安装脚本:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh`
+
+ * 冷水
+ 
+1.ohmyzsh可能因为某些因素卡死你的终端！ 
+
+2.fish的补全不区分大小写！
+
+3.ohmyzsh有机率触发exec()error，一经触发无法修复(别问我为什么这么清楚，这是我换用bash的真正原因)。
 
 [Termux Shell列表]
 
@@ -86,6 +95,14 @@ fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有�
 
 注：Termux的bash启动文件'profile'中source了'$PREFIX/etc/bash.bashrc'和'$HOME/.bashrc'，etc目录内的'bash.bashrc'先于home目录内的'.bashrc'被读取。
  
+ * Termux上的chsh是什么？
+ 
+Linux上的chsh通过修改`/etc/passwd`文件来改变用户的启动Shell，那Termux这个单用户机制的应用呢？
+
+答案是通过修改`~/.termux/shell`文件，这个文件不存在时Termux就去启动bash，存在时则将其作为启动Shell。
+
+chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的shell，并在`~/.termux`目录中建立名为shell的符号链接指向它。
+
 2.选择文本编辑器
 
 Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
@@ -147,6 +164,9 @@ https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,ai
 
 同时termux官方给出了一个python脚本，帮助用户构建自己的deb包。
 
+一键配置所有第三方源:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/sources.sh`
+
+
  * Termux第三方源列表
 
 [1]Tuna镜像源
@@ -200,6 +220,23 @@ termux自带apt，基于apt封装了一个pkg命令
 
 但我建议使用apt，这样做可以让你在将来快速适应deb系的发行版。
 
+ * apt update
+ 
+更新deb包索引信息，当初次打开无法安装软件包时可运行此命令。
+
+ * apt下载的deb包在哪儿？
+ 
+`$PREFIX/var/cache/apt/archives`
+
+ * apt的本质
+ 
+基于dpkg封装的自动化包管理器。
+
+ * 为什么不能兼容debian系发行版的deb包(那怕架构相同)？
+ 
+因为软件的安装目录是在deb包中被预制定好的，并且以绝对路径形式制定。
+
+ 
 ###########
 
 [+]目录结构
@@ -216,6 +253,14 @@ termux-chroot
 ```
 
 但这对性能有一定损伤。
+
+
+[+]获得读写sdcard权限
+
+`termux-setup-storage`获得sdcard读写权限。
+
+`ln -s target linkname`建立软链方便管理。
+
 
 [+]启动效果
 
@@ -236,6 +281,8 @@ Termux中长按屏幕，点按'More'出现更多选项。
 [+]在Android中调用Termux编辑器
 
 ```shell
+cd ~
+ln -s /sdcard/documents downloads
 mkdir ~/bin
 cd ~/bin
 ln -s $PREFIX/bin/nano termux-file-editor
@@ -245,200 +292,39 @@ ln -s $PREFIX/bin/nano termux-file-editor
 
 完成后在Termux的home目录内生成downloads目录，编辑完成后文件将保存在这个目录。
 
-[+]获得并使用源码
+[+]url钩子
 
-百度网盘不限速下载，无限制下载各网站视频，构建基于websocket的科学上网环境……
+建立文件`~/bin/termux-url-opener`，然后可以在Android中用Termux打开链接。
 
-没错，Termux都可以做到!
+可以在此处链接you-get或lynx，自已写一个处理url的脚本也可以。
 
-但这样的功能一般依靠github上其他人创建的repo才能做到，要学会git,python,ruby,golang的基础用法。
+[+]文件传输
 
- * git基本用法
- 
-```shell
-git clone $repourl $dirname
-```
-
-复制repo到本地目录
-
-但中国网络环境出了名的不好，一般大型项目传输中途会断流！
-
-使用shadowsocks成本又高，最好还是用ssh拉取源码。
-
-如果希望使用ssh拉取源码，那么应该注册一个github账号，创建自己的ssh密钥，并将公钥提交到github。
+1.同子网内,文件流向:Termux~>client
 
 ```shell
-apt install openssh
-ssh-keygen -t rsa -C "youremail@example.com"
-cat $HOME/.ssh/id_rsa.pub
-#输出的内容就是你的公钥
+cd $dir
+python -m SimpleHTTPServer
 ```
+python将监听8000端口，并开启一个简单的http服务器，根目录为$dir，这相当方便易用，风险也小(拒绝使用登录式ftp)
 
-将公钥提交到github需要在浏览器内完成，此处不作演示。
+当然了，如果你要的只是快，这样的确很好。但这样不方便整个目录的复制，如果你经常传输文件，可以考虑一下pure-ftpd
 
-想略为深入的学习git，建议看[廖雪峰的git教程]
- 
-```shell
-cd $dirname
-git pull
-```
- 
-更新repo
+pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项。
 
- 
- * python(2或3)
- 
-python 是目前全世界最流行的编程语言，分为2和3两个版本
+1.不要为ftp用户开启可写权限
 
-使用python2编写的项目不能使用python3解释器来运行，反之亦然。
+2.只使用匿名登录
 
-`python xxx.py`  或 `python2 xxx.py`
+如果需要修改、上传文件，那还是用sftp吧。
 
- * 运行报错？
- 
-可能的几种情况
- 
- [1]未安装需要的模块。报错信息`no module named xxxx`
+[+]Remoteshell
 
- `pip install xxxx`即可
- 
- [2]解释器版本问题
- 
- [3]脚本自身问题(bug)，这需要自身有一定python基础才能修复
- 
- [4]权限问题，某些脚本需要以root权限运行。
- 
- 若有Android root权限，在Termux内输入`pkg install tsu`,安装完成后输入`tsu`，让Termux应用获取root权限即可。
- 
- 在输入`tsu`后，可输入`exit`回到普通模式
- 
- 注：在root用户状态下创建文件不是个好主意，可能带来严重的权限问题。
- 
- 注：安装软件包和python依赖包也属于创建文件的行为。
- 
- * pyc文件
+Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的ssh公钥输出到`~/.ssh/authorized_keys`这个文件内。
 
-pyc文件是python的虚拟机字节码文件。事实上，py文件先被解释器翻译为pyc字节码文件，然后导入PVM(Python Virtual Machine,python虚拟机)中运行。
+这对你可以使用的ssh客户端产生了一定限制，connectbot这种过于简单的客户端是无法使用了。如果你在自己可以信任的网络中进行工作，你可以使用jupyter或netcat。
 
- * pip
-
-pip是一个自动化的python依赖包管理器
-
-同理，使用python2编写的模块只能用pip2安装
-
-```shell
-pip install $ModuleName
-```
-
-若repo目录内包含requirements.txt,直接`pip install -r requirements.txt`即可
-
--r表示从文件中读取参数(read)。
-
- * 安装报错？
- 
- [1]使用了错误的pip版本。
- 
- [2]此模块需连接C库。
- 
-先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则寻找报错信息中有无`include<xxx.h>`。 若有，则安装对应的dev包和lib包即可。
-
-仍无法正确安装，则建议先在github的issues区自行搜索。
-
-`apt install lib*dev`是个好方法。
-
-当没有可用方案时，可以自行创建一个issues，有时实际情况的确难以由用户自行解决。
-
-注：也有人说只要clang装好就没有问题，太扯了…… 
- 
- * 为何会这样？
- 
- termux尽管基于debootstrap,官方行事却有Arch之风，连保留旧版软件包都不愿意。为python依赖打deb包啥的更是不可能了
- 
- * 曲线救国之法
- 
- proot/chroot运行一个Linux发行版(建议使用debian一系的发行版),或使用gnurootdebian。然后执行 `apt install python-$ModuleName`
-
- * ruby
- 
- `ruby xxx.rb`可运行此脚本
- 
- * gem
- 
- gem是ruby的模块管理工具。但我们一般不使用它
- 
- * bundler
- 
- bundler是一个自动化的ruby模块管理器。
- 
- * 安装及使用
- 
-```shell
-gem install bundler
-cd $repodir
-bundle install
-```
-
- 
- * 注意
- 
-有时repo的启动脚本没有.rb这个后缀，可在`$PREFIX/bin`中建立它的软链接方便使用。
- 
-以metasploit为例，启动脚本为msfconsole,安装结束并建立软链接后可在任意目录用msfconsole来启动它。
- 
-这时你应预先修改msfconsole的shebang。
- 
- * 常见问题
- 
-C库依赖……仍用运行发行版后`apt install ruby-$module`解决，如果想折腾，自己认真看看报错即可，仍然建议多看Termux的issues。
-
-注：google翻译是个好东西。
- 
-bundler对tmp目录无写权限。chmod 777是不可行的，要用root权限来运行bundler(并非好方案)。
- 
- * nodejs
- 
-```shell
-node xxx.js 
-cd $repodir
-npm install
-```
- 
- * 何为shebang?
- 
-shebang是脚本的首行，一般会定义脚本解释器的位置。
- 
-termux-exec可以使termux适应Linux风格的shebang。
- 
-或用'termux-fix-shebang $script' 修改脚本shebang。
- 
- * go
- 
-go是跨平台的编译型语言
- 
-```shell
-apt install golang
-go get $repourl
-```
-
-注意去掉$repourl的`https://`前缀。
- 
-完成后在$HOME建立go工作目录，在其中的bin子目录有编译完成的elf可执行文件。src目录则包含其源码，当bin目录为空时，进入源码目录使用`go run xxx.go`来运行项目。
- 
-或者`cd $repodir&&go build`
- 
- * 一些工具
-
-[Baidupcsgo](https://github.com/iikira/BaiduPCS-Go)百度网盘不限速下载 
- 
-[you-get] 强大的视频下载器，支持全球大多数视频网站，`pip install you-get`即可安装。
- 
-
-
-[附录]获得读写sdcard权限
-
-`termux-setup-storage`获得sdcard读写权限。
-
-`ln -s target linkname`建立软链方便管理。
+如要在外部网络访问可以使用frp和ngrok将你的Server端口映射到公网上，如梯子钱充够了也可按官方教程使用tor进行端口映射。
 
 [附录]proot运行Linux发行版
 
