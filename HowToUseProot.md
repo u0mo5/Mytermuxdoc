@@ -65,7 +65,9 @@ unset LD_PRELOAD
 注:这一步没有在proot的帮助中出现，但的确需要完成。
 
 ```shell
-/usr/bin/env -i
+/usr/bin/env
+#不明白
+-i
 #不明白，但非常重要。
 HOME=/home
 #设定Home目录

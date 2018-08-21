@@ -51,7 +51,14 @@ termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cab
  
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
 
- * fish的安装与使用
+ * lightweight plugin&theme manager
+ 
+为了用一两个主题和插件就下载一整个ohmyzsh仓库也未免太奢侈(浪费)了，我们有更好的选择。
+
+[antigen](https://github.com/zsh-users/antigen)是一个轻量的zsh主题/插件管理器。
+
+
+* fish的安装与使用
  
 安装:`apt install fish`
 
