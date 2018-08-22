@@ -60,6 +60,10 @@ unset LD_PRELOAD
 
 虚拟内核版本号。
 
+8.[-i]
+
+用`-i uid:gid`来指定自己启动proot时的登录用户。
+
 [$]设定shell变量与登录shell
 
 注:这一步没有在proot的帮助中出现，但的确需要完成。
@@ -92,5 +96,19 @@ exec proot --link2symlink -0 -r /data/data/com.termux/files/home/TermuxAlpine/ -
 问题1:当proot启动脚本中的shell与/etc/passwd相冲突时，听谁的?
 
 proot是老大，听他的。
+
+问2：proot会启动linux发行版的init吗？
+
+不会。
+
+问3：systemd在Android上可用吗？
+
+由于Android的内核魔改过，所以不行。
+
+问4：我很懒……
+
+https://github.com/myfreess/Termux-writer
+
+专为懒人设计，Termux上的proot脚本模板生成器。
 
 
