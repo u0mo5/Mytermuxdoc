@@ -194,6 +194,8 @@ go get $repourl
  
 或者`cd $repodir&&go build`
 
+有一篇好文可以读一读:https://splice.com/blog/contributing-open-source-git-repositories-go/
+
 注：golang编译时不使用共享库。
 
  * 使用make完成构建

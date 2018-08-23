@@ -20,6 +20,10 @@ PS1='[\w]'
 
 `\w`意为当前路径，必须处于单引号包裹中。
 
+ * bash-completion
+ 
+bash不会很漂亮，但补全还是有的。 
+
 #关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
 
 #关于bash的内置命令(exec alias …)也不多说
@@ -40,7 +44,7 @@ zsh设计思想相当Linux,不写配置还不如用bash
  
 但是zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
  
-termux有一键安装oh-my-zsh的脚本，可自行安装:[https://github.com/Cabbagec/termux-ohmyzsh.git]，甚至可以更换终端配色与字体！
+termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cabbagec/termux-ohmyzsh ，甚至可以更换终端配色与字体！
 
 安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
  
@@ -420,7 +424,7 @@ am全称activity manager，你能使用am去模拟各种系统的行为，例如
  
 [附录]图形界面
 
-见extra源。
+见extra源，xorg还有openbox啥的。
 
 
 
