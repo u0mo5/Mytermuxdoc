@@ -40,9 +40,8 @@ zsh设计思想相当Linux,不写配置还不如用bash
  
 但是zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
  
-termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cabbagec/termux-ohmyzsh，甚至可以更换终端配色与字件！
+termux有一键安装oh-my-zsh的脚本，可自行安装:[https://github.com/Cabbagec/termux-ohmyzsh.git]，甚至可以更换终端配色与字体！
 
- 
 安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
  
 插件自行选择吧！
