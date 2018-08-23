@@ -51,6 +51,10 @@ termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cab
  
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
 
+ * 语法高亮
+ 
+https://github.com/zsh-users/zsh-syntax-highlighting 
+
  * plugin&theme manager
 
 [antigen](https://github.com/zsh-users/antigen)是一个轻量的zsh主题/插件管理器。
@@ -414,7 +418,15 @@ Xorg及图形环境。
 am全称activity manager，你能使用am去模拟各种系统的行为，例如去启动一个activity，强制停止进程，发送广播进程，修改设备屏幕属性等等。
 
 就是Android上的应用调试器，给开发者用的。
+ 
+[附录]图形界面
 
+见extra源。
+
+
+
+
+友链:http://www.freebuf.com/geek/170510.html
 
 
 
