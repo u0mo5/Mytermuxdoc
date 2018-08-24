@@ -224,3 +224,5 @@ make install
 [hexo]轻量的个人博客框架by nodejs
 
 [webui-aria2](https://github.com/ziahamza/webui-aria2)快速，强大，易用的多线程下载器。
+
+[zeronet]去中心化的web网络，Termux安装脚本:bash < $(curl https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/installer/zeronet.sh)
