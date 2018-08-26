@@ -354,6 +354,8 @@ Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的
 
 mosh和caddy也可能是一个不错的选择。
 
+mosh的优势在于使用udp协议，在低速网络下很方便。
+
 [附录]proot运行Linux发行版
 
 termux打包了proot，github上的termux用户们则热心地编写了一系列用于运行发行版的bashscript。

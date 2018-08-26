@@ -83,6 +83,10 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 #指定可执行文件所在目录
 /bin/sh --login
 #启动登录shell
+#如果你用bash
+/bin/bash -l
+#zsh用户
+/usr/bin/zsh -l
 ```
 
 [+]集成到脚本中
