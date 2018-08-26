@@ -259,6 +259,10 @@ termux自带apt，基于apt封装了一个pkg命令
 
 https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
 
+kali安装:
+
+[kali](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/kali.png)
+
 
 [+]拉取并使用源码文件
 
