@@ -1,3 +1,5 @@
+![termux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/termux.png)
+
 termux不完全指南
 
 命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
@@ -21,6 +23,8 @@ PS1='[\w]'
 ```
 
 `\w`意为当前路径，必须处于单引号包裹中。
+
+有文一篇：https://blog.mycike.com/846.html
 
  * bash-completion
  
@@ -74,6 +78,8 @@ https://github.com/zsh-users/zsh-syntax-highlighting
 fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
 
 自写oh-my-fish安装脚本:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh`
+
+注：fish不兼容bash的script语法。
 
  * 冷水
  
@@ -255,13 +261,30 @@ termux自带apt，基于apt封装了一个pkg命令
  
 ###########
 
+[+]有关termux的文章链接
+
+http://www.freebuf.com/geek/170510.html
+
+http://www.sqlsec.com/2018/05/termux.html
+
+[+]justforfun
+
+```shell
+curl wttr.in?lang=zh
+#天气预报
+echo "https://github.com/myfreess" | curl -F-=\<- qrenco.de
+#终端下的二维码
+```
+
 [+]proot
 
 https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
 
 kali安装:
 
-[kali](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/kali.png)
+![kali](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/kali.png)
+
+还有一步:chmod 755 $PREFIX/bin/chalk
 
 
 [+]拉取并使用源码文件
@@ -368,6 +391,8 @@ termux打包了proot，github上的termux用户们则热心地编写了一系列
 
 连接图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
 
+隔壁群群主的脚本:https://github.com/YadominJinta/atilo
+
 [附录]改造termux
  
 注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
@@ -436,10 +461,12 @@ am全称activity manager，你能使用am去模拟各种系统的行为，例如
 
 见extra源，xorg还有openbox啥的。
 
+有文一篇https://yadominjinta.github.io/2018/07/30/GUI-on-termux.html
 
 
 
-友链:http://www.freebuf.com/geek/170510.html
+
+
 
 
 

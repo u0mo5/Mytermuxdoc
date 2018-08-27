@@ -186,13 +186,15 @@ go是跨平台的编译型语言
 ```shell
 apt install golang
 go get $repourl
+#golang一般无法完成这一步
+#请自行挂梯子
 ```
 
 注意去掉$repourl的`https://`前缀。
  
 完成后在$HOME建立go工作目录，在其中的bin子目录有编译完成的elf可执行文件。src目录则包含其源码，当bin目录为空时，进入源码目录使用`go run xxx.go`来运行项目。
  
-或者`cd $repodir&&go build`
+或者`cd $repodir&&go build`,这必须在依赖安装完成的情况下进行。
 
 有一篇好文可以读一读:https://splice.com/blog/contributing-open-source-git-repositories-go/
 
@@ -226,3 +228,8 @@ make install
 [webui-aria2](https://github.com/ziahamza/webui-aria2)快速，强大，易用的多线程下载器。
 
 [zeronet]去中心化的web网络，Termux安装脚本:bash < $(curl https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/installer/zeronet.sh)
+
+[sqlmap]sql远程管理工具，好用！(认真)
+
+
+

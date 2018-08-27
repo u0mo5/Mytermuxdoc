@@ -74,6 +74,7 @@ msf> db_rebuild_cache
 #退出
 msf> exit
 #以上的msf>并非需要输入的内容！
+```
 
 
 [+]使用

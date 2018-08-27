@@ -82,7 +82,7 @@ LANG=zh_CN.UTF-8
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 #指定可执行文件所在目录
 /bin/sh --login
-#启动登录shell
+#启动登录shell，此处为原生贝尔实验室shell。
 #如果你用bash
 /bin/bash -l
 #zsh用户
