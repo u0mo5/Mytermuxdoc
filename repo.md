@@ -181,20 +181,26 @@ termux-exec可以使termux适应Linux风格的shebang。
  
  * go
  
-go是跨平台的编译型语言
+go是跨平台的编译型语言。
+
+以csploit项目的核心编译为例：
  
 ```shell
 apt install golang
-go get $repourl
+go get github/cSploit/daemon
+#go get将自动下载项目及其依赖，有时也会自动编译
 #golang一般无法完成这一步
 #请自行挂梯子
+cd $GOPATH/src/github/cSploit/daemon
+go build -i
 ```
+golang会在$HOME建立go工作目录，在其中的bin子目录有编译完成的elf可执行文件。src目录则包含项目源码，当bin目录为空时，进入源码目录使用`go build`来编译项目。
 
-注意去掉$repourl的`https://`前缀。
- 
-完成后在$HOME建立go工作目录，在其中的bin子目录有编译完成的elf可执行文件。src目录则包含其源码，当bin目录为空时，进入源码目录使用`go run xxx.go`来运行项目。
- 
-或者`cd $repodir&&go build`,这必须在依赖安装完成的情况下进行。
+注：编译时耗电量较大，占用运存也很多
+
+`go run xxx.go`则可以测试而不编译此项目。
+
+总之，编译前多看README是不会有错的。
 
 有一篇好文可以读一读:https://splice.com/blog/contributing-open-source-git-repositories-go/
 
@@ -207,6 +213,7 @@ git clone $repourl
 cd $repodir
 make
 make install
+#要求项目作者写了Makefile
 ```
 
 
