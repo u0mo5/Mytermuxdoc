@@ -133,7 +133,7 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 
 没奈何，Vim与Emacs取其一。
 
-Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。Neovim比vim更美观，也作为选择之一。
+Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。Neovim作为vim的分支，也作为选择之一。
 
 Termux官方列出了所有Termux上可用的文本编辑器，详情见wiki。
 
@@ -146,6 +146,22 @@ Emacs在设计之初的目标就是：提供一个完整的系统工具集所应
  * 退出Vim
 
 按下'ESC'键，进入命令模式，输入':wq'将保存文件并退出Vim。 
+
+ * vim中文支持
+ 
+```shell
+mkdir ~/.vim
+cd ~/.vim
+touch vimrc
+#以下为vimrc内容
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030
+#保存文件
+#在shell的init文件中加一行
+source ~/.vim/vimrc
+#结束
+```
 
 注：google中文输入法无法在termux内输入中文。
 
