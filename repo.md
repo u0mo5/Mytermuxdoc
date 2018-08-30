@@ -170,6 +170,10 @@ node xxx.js
 cd $repodir
 npm install
 ```
+
+ * npm安装任意包都报错？
+ 
+请前往Termux官方github repo，官方有给解决方案。
  
  * 何为shebang?
  
