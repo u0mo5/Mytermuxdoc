@@ -2,7 +2,9 @@
 
 termux不完全指南
 
-命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
+>##序言：Termux是一个可以在Android平台运行GNU/Linux应用的终端，享受linux应用带来的便利吧！
+
+必读：命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
 
 [+]初始化
 
@@ -171,6 +173,8 @@ source ~/.vim/vimrc
 
 酷安某用户修改了termux的特殊键，增加了上下左右键，修改版apk我放在仓库里了，有需要自己下。
 
+后注：termux更新后增加了juicessh风格的特殊键，修改版已从仓库中移除。
+
  * 横屏编辑
  
 除非使用平板，否则很难兼顾特殊键与中文。 
@@ -294,13 +298,15 @@ echo "https://github.com/myfreess" | curl -F-=\<- qrenco.de
 
 [+]proot
 
-https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
+proot是chroot的用户空间实现，一个简单的容器应用。
+
+使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
 
 kali安装:
 
 ![kali](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/kali.png)
 
-还有一步:chmod 755 $PREFIX/bin/chalk
+教程内缺少的步骤:chmod 755 $PREFIX/bin/chalk
 
 
 [+]拉取并使用源码文件
