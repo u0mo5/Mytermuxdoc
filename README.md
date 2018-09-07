@@ -2,7 +2,7 @@
 
 termux不完全指南
 
->##序言：Termux是一个可以在Android平台运行GNU/Linux应用的终端，享受linux应用带来的便利吧！
+>序言：Termux是一个可以在Android平台运行GNU/Linux应用的终端，享受linux应用带来的便利吧！
 
 必读：命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
 
@@ -32,15 +32,15 @@ PS1='[\w]'
  
 bash不会很漂亮，但补全还是有的。 
 
-#关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
+>关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
 
-#关于bash的内置命令(exec alias …)也不多说
+>关于bash的内置命令(exec alias …)也不多说
 
-#Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
+>Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
-#还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
+>还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
 
-#当然缺不了Termux官方wiki:https:wiki.termux.com/wiki/Main_Page
+>当然缺不了Termux官方wiki: https:wiki.termux.com/wiki/Main_Page
 
 当然我们有更好的选择，zsh和fish是很受新手欢迎的两个shell
 
@@ -287,6 +287,50 @@ http://www.freebuf.com/geek/170510.html
 
 http://www.sqlsec.com/2018/05/termux.html
 
+###########
+
+>前言：
+
+我希望我将来可以达到下图的水准
+
+![mydream](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/mydream.png)
+
+不过现实还差得远呢。
+
+$TERMUX_PACKAGE
+
+termux可安装的linux应用介绍。
+
+ * tsu
+ 
+ * lftp
+ 
+ * openssh
+ 
+ * proot
+
+proot是chroot的用户空间实现，一个简单的容器应用。
+
+termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构。
+
+proot使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
+
+顺便一说，github上的termux用户们热心地编写了一系列用于运行发行版的bashscript。
+
+目前有Fedora,kali,Arch,debian可以选择，当然……失败率挺高的。
+
+连接图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
+
+隔壁群群主的脚本:https://github.com/YadominJinta/atilo ，可以帮助用户快速安装linux发行版。
+
+ * curl & wget
+
+$TERMUX_COMMON
+
+Termux日常使用帮助。
+
+>注:尽管Termux官方尽可能的为Termux营造linux的使用感受，但仍与linux有很大不同。此帮助手册包含大量linux发行版不支持的Termux特殊性质与配置。
+ 
 [+]justforfun
 
 ```shell
@@ -296,23 +340,9 @@ echo "https://github.com/myfreess" | curl -F-=\<- qrenco.de
 #终端下的二维码
 ```
 
-[+]proot
-
-proot是chroot的用户空间实现，一个简单的容器应用。
-
-使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
-
-kali安装:
-
-![kali](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/kali.png)
-
-教程内缺少的步骤:chmod 755 $PREFIX/bin/chalk
-
-
 [+]拉取并使用源码文件
 
 https://github.com/myfreess/Mytermuxdoc/blob/master/repo.md
-
 
 [+]目录结构
 
@@ -329,13 +359,11 @@ termux-chroot
 
 但这对性能有一定损伤。
 
-
 [+]获得读写sdcard权限
 
 `termux-setup-storage`获得sdcard读写权限。
 
 `ln -s target linkname`建立软链方便管理。
-
 
 [+]启动效果
 
@@ -375,7 +403,7 @@ ln -s $PREFIX/bin/nano termux-file-editor
 
 [+]文件传输
 
-1.同子网内,文件流向:Termux~>client
+1.文件流向:Termux~>client
 
 ```shell
 cd $dir
@@ -401,21 +429,11 @@ Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的
 
 如要在外部网络访问可以使用frp和ngrok将你的Server端口映射到公网上，如梯子钱充够了也可按官方教程使用tor进行端口映射。
 
-mosh和caddy也可能是一个不错的选择。
+mosh也可能是一个不错的选择。
 
 mosh的优势在于使用udp协议，在低速网络下很方便。
 
-[附录]proot运行Linux发行版
-
-termux打包了proot，github上的termux用户们则热心地编写了一系列用于运行发行版的bashscript。
-
-目前有Fedora,kali,Arch,debian可以选择，当然……失败率挺高的。
-
-连接图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
-
-隔壁群群主的脚本:https://github.com/YadominJinta/atilo
-
-[附录]改造termux
+[+]改造termux
  
 注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
 
@@ -425,33 +443,7 @@ termux打包了proot，github上的termux用户们则热心地编写了一系列
 
 现成的实现在此https://github.com/myfreess/termux-bashlock
 
-[附录]编译C源码文件
-
-README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能把软件装好！
-
-事实上大多数时候没这么好的事。
-
-言归正传，Termux上的c编译器是`clang`，比gcc更轻量。
-
-当然Linux一贯的特点是兼容并蓄，所以安装后它会建立名为`cc`的符号键接指向自身，以适应使用gcc的一些应用。
-
-当然，一般我们不会直接使用clang进行编译，GNU/Linux上的传统编译管理器是make。
-
-注：GNU/Linux是Linux的正式名称(但不是官方名称)
-
-一般来说大型的C程序都需要先将源码文件编译为对象文件，再从对象文件生成Elf可执行文件(Linux上是这样做的)。
-
-当编译时需要加入一些特殊的选项时，手动编译就不太合适了。
-
-于是开发者会编写一个Makefile，你解开源码包并进入源码目录，运行make完成编译，然后`make install`，安装就完成了。
-
-然而仅靠一个Makefile还是适应不了各平台的差别，于是有了Autoconf这类移植工具。
-
-注：这里说的各平台只包括Unix系的操作系统，windows没那么好解决。
-
-注：现代的gcc支持多种语言的编译，而现代的make甚至可以自动化完成Docker容器的创建(这个说法可能不对)和运行。
-
-[附录]与Android交互
+[+]与Android交互
 
 这可能是Termux最强大的功能，需要以下支持:
 
