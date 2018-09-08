@@ -303,27 +303,137 @@ termux可安装的linux应用介绍。
 
  * tsu
  
+tsu是Termux独有的su程序，允许用户以root权限运行Termux内的linux应用。
+
+使用：
+
+```shell
+apt install tsu
+tsu
+#exit可退出root用户状态
+#单次使用root权限
+tsudo command
+```
+ 
  * lftp
  
+轻量的cliftp客户端。
+ 
  * openssh
+ 
+包含ssh,scp,sftp,sshd,sftpd，ssh-keygen等多个程序。
+
+sshd是ssh服务守护进程，ssh则是客户端。
  
  * proot
 
 proot是chroot的用户空间实现，一个简单的容器应用。
 
-termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构。
+termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构，外加模拟root权限。
 
 proot使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
 
-顺便一说，github上的termux用户们热心地编写了一系列用于运行发行版的bashscript。
+顺便一说，github上的termux用户们热心地编写了一系列用于安装运行发行版的bashscript。
 
-目前有Fedora,kali,Arch,debian可以选择，当然……失败率挺高的。
+可选的发行版：
 
-连接图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
+Fedora,kali,Arch,debian，ubuntu，alpine……
 
-隔壁群群主的脚本:https://github.com/YadominJinta/atilo ，可以帮助用户快速安装linux发行版。
+连接方式：
 
- * curl & wget
+图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
+
+安装：
+
+官方建议见此处:https://wiki.termux.com/wiki/PRoot
+
+隔壁群群主的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
+
+选择发行版:
+
+如果只是想玩桌面，fetora足矣。如果电脑桌面OS已经是linux了，那么请自选。
+
+桌面环境：
+
+别用什么lxde了，openbox这种WM才是最好的选择。
+
+ * curl & wget 
+ 
+普通的下载器(-_-)……
+
+言归正传，curl支持的传输协议其实不少，以下为官方介绍:
+
+![curl](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/curl.svg)
+
+>A command line tool and library for transferring data with URL syntax, supporting HTTP, HTTPS, FTP, FTPS, GOPHER, TFTP, SCP, SFTP, SMB, TELNET, DICT, LDAP, LDAPS, FILE, IMAP, SMTP, POP3, RTSP and RTMP. libcurl offers a myriad of powerful features https://curl.haxx.se/
+
+wget就略单薄一点，只有http和ftp(加上ssl)支持。
+
+它们的下载线程是单线程机制的，所以效率上肯定比不上aria2，优势在于它们是web调(ri)试(zhan)与自动化任务的一把好手。
+
+例如在美剧Mr.Robot中，主角用wget拿了个服务器低权限shell，然后开始提权&搞破坏……
+
+ * aria2
+ 
+强悍的cli下载器，支持Metalink等现代下载技术。 
+
+开启rpc配合transdroid食用更佳。
+
+安装&开启rpc
+
+```shell
+apt install aria2
+#开启rpc
+aria2c --enable-rpc --rpc-listen-all
+```
+然后可以用transdroid方便地从127.0.0.1:6800连接了，下载奇快！
+
+ * weechat&irssi
+ 
+Irc聊天用 
+ 
+ * nginx
+ 
+高性能http服务器。 
+
+>默认的普通权限无法启动 nginx, 需要模拟root权限才可以
+
+运行：
+
+```shell
+apt install proot nginx -y
+termux-chroot
+nginx
+```
+默认端口8080。
+
+ * apache
+ 
+``shell
+apt install apache2
+apache2ctl start
+```
+ 
+ * tor
+ 
+tor网络客户端。 
+ 
+ * mutt
+ 
+邮件客户端。 
+ 
+ * linuxutil&busybox&coreutil
+ 
+包含whatis，netcat等实用linux小工具 
+
+
+ * game
+ 
+gnuchess,gnugo啥的。
+
+extra源有doxbox,stable源有fontz，玩些字符游戏没问题！
+
+apt search game可以找到更多游戏！
 
 $TERMUX_COMMON
 

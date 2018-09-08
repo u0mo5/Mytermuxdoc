@@ -172,8 +172,15 @@ npm install
 ```
 
  * npm安装任意包都报错？
- 
-请前往Termux官方github repo，官方有给解决方案。
+解决方案:https://github.com/rvagg/node-worker-farm/commit/0b2349c6c7ed5c51e234e418fad226875313e773
+
+手动解决
+
+```shell
+vim $PREFIX/lib/node_modules/npm/node_modules/worker-farm/lib/farm.js
+#将'maxConcurrentWorkers        : (require('os').cpus() || { length: 1 }).length'内的1改动一下，改成一个小于cpu核心数的数字。
+
+```
  
  * 何为shebang?
  
