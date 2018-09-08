@@ -409,7 +409,7 @@ nginx
 
  * apache
  
-``shell
+```shell
 apt install apache2
 apache2ctl start
 ```
