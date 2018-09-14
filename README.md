@@ -1,24 +1,35 @@
 ![termux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/termux.png)
 
-termux不完全指南
+Termux不完全指南
 
->序言：Termux是一个可以在Android平台运行GNU/Linux应用的终端，享受linux应用带来的便利吧！
+必读：
 
-必读：命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
+命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
+
+Termux官方wiki：https:wiki.termux.com/wiki/Main_Page
+
+[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
 [+]初始化
 
 1.选择shell
 
-termux的默认shell是bash(但Termux还默认安装了dash)，启动文件为`$PREFIX/etc/bash.bashrc`
+ * bash
+![bash](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/bash.png)
+ 
+bash是Termux及大多数linux发行版的默认shell(但Termux还默认安装了dash)
+
+启动文件为`$PREFIX/etc/bash.bashrc`和`~/.bashrc`
 
 注：这只是一种简单的说法，bash启动文件的详细情况见下文。
 
-默认只定义了bash提示符为`$`,不包括当前路径，未免不太方便
+ * $PS1
+
+Termux默认只定义了bash提示符为`$`,不包括当前路径，未免不太方便
 
 本人修改bash提示符为['当前路径']，这已经够我用了。
 
-修改方法：`nano $PREFIX/etc/bash.bashrc`，然后修改提示符变量PS1为
+修改方法：`nano ~/.bashrc`，然后修改提示符变量PS1为
 
 ```shell
 PS1='[\w]'
@@ -26,60 +37,66 @@ PS1='[\w]'
 
 `\w`意为当前路径，必须处于单引号包裹中。
 
-有文一篇：https://blog.mycike.com/846.html
+如果想自行配置，有文一篇[用PS1美化你的shell]：https://blog.mycike.com/846.html
 
  * bash-completion
  
 bash不会很漂亮，但补全还是有的。 
 
->关于bash提示符与bashrc的详细设置不多叙述，详情见任意linux学习书籍。
+安装&使用：
 
->关于bash的内置命令(exec alias …)也不多说
+```shell
+apt install bash-completion
+```
 
->Linux基本操作推荐这个：[RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
-
->还有[How Linux Works(2nd Edition) [美 Brian Ward]和刘忆智的Linux从入门到精通，看看gentoo与Arch论坛也不错。
-
->当然缺不了Termux官方wiki: https:wiki.termux.com/wiki/Main_Page
-
-当然我们有更好的选择，zsh和fish是很受新手欢迎的两个shell
-
- * zsh安装及配置
+ * zsh
  
-安装:`apt install zsh`
+安装:
 
-zsh设计思想相当Linux,不写配置还不如用bash
- 
-但是zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
- 
-termux有一键安装oh-my-zsh的脚本，可自行安装:https://github.com/Cabbagec/termux-ohmyzsh ，甚至可以更换终端配色与字体！
+```shell
+apt install zsh
+```
 
-安装后默认主题是agnoster，可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
+ * oh-my-zsh
+![ohmyzsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/oh-my-zsh.png) 
  
-插件自行选择吧！
+zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
  
-效果图上一张：
- 
-![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.gif) 
+termux有一键安装oh-my-zsh的脚本，可以更换终端配色与字体。
 
- * 语法高亮
+安装:
+
+```shell
+cd ~
+git clone https://github.com/Cabbagec/termux-ohmyzsh
+cd termux-ohmyzsh
+bash install.sh
+```
+
+安装后默认主题是agnoster
+![agnoster](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/agnoster.png)
+
+可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
+
+* zsh-syntax-highlighting
  
 https://github.com/zsh-users/zsh-syntax-highlighting 
 
- * plugin&theme manager
+默认包含于Cabbagec的脚本中。
 
-[antigen](https://github.com/zsh-users/antigen)是一个轻量的zsh主题/插件管理器。
-
-可为zsh安装语法高亮等有用的工具
-
-
-* fish的安装与使用
+* fish
  
 安装:`apt install fish`
 
-fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
+fish是开箱即用型shell,UI风格对用户非常友好。
 
-自写oh-my-fish安装脚本:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh`
+如果希望拥有一个更加强大的shell,可以用oh-my-fish和fisherman来安装主题和插件。
+
+```shell
+#ohmyfish安装
+curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh
+bash fishsetup.sh
+```
 
 注：fish不兼容bash的script语法。
 
@@ -89,27 +106,13 @@ fish是开箱即用型shell,UI风格对用户非常友好,但如果希望拥有�
 
 2.fish的补全不区分大小写！
 
-3.ohmyzsh有机率触发exec()error，一经触发无法修复(别问我为什么这么清楚，这是我换用bash的真正原因)。
+3.oh-my-zsh有机率触发exec()error，一经触发无法修复(别问我为什么这么清楚，这是我换用bash的真正原因)。
 
-[Termux Shell列表]
+注：[Termux Shell列表](https://wiki.termux.com/wiki/Shells) 
 
- * bash
+注：在Termux的shell会话中可通过输入`exit 0`来关闭一个shell会话，Ctrl-d也可。
  
- * zsh
- 
- * fish
- 
- * dash
- 
- * tcsh
- 
- * Xonsh 
- 
-更多信息可见[Termux wiki:Shells](https://wiki.termux.com/wiki/Shells) 
-
-注：可通过输入`exit 0`来关闭一个shell会话，Ctrl-d也可。
- 
-注：长按屏幕左边滑出的'keyboard'可打开一些特殊键
+注：在Termux中长按屏幕左边滑出的'keyboard'可打开一些特殊键
  
  * Termux启动的是登录Shell吗？
  
@@ -181,15 +184,7 @@ source ~/.vim/vimrc
 
 3.选择软件源
 
-termux的官方源软件包齐全，但没有打包好的python和ruby依赖包。
-
-像pynacl这类包含c库依赖的模块一般无法正常安装。
-
-同时官方源不保留旧版本软件包。想安旧版可以试试`Tuna`，这是由中国某大学维护的软件源，支持Termux。一还有由xeffyr维护的Termux Mirror。
-
-某些源包含openjdk这类官方源中不包含的软件包(Extra源)
-
-在`$PREFIX/etc/apt/source.list`加入一行`deb https://termux.xeffyr.ml/ extra main x11`
+termux的官方源软件包齐全，但没有打包好的python和ruby依赖包。像pynacl这类包含c库依赖的模块一般无法正常安装。同时官方源不保留旧版本软件包。想安旧版可以试试`Tuna`，这是由中国某大学维护的软件源，支持Termux。还有由xeffyr维护的Termux Mirror。某些源包含openjdk这类官方源中不包含的软件包(Extra源)。在`$PREFIX/etc/apt/source.list`加入一行`deb https://termux.xeffyr.ml/ extra main x11`即可。
 
 简单操作一下：
 
@@ -207,7 +202,6 @@ https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,ai
 同时termux官方给出了一个python脚本，帮助用户构建自己的deb包。
 
 一键配置所有第三方源:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/sources.sh`
-
 
  * Termux第三方源列表
 
@@ -245,14 +239,19 @@ termux-create-package:字面意思
 
 termux-am:apk文件，在`$PREFIX/libexec/termux-am`目录下。是am命令的Android8.0特别版。
 
-termux-elf-cleaner：
+[附录]am命令
+
+am全称activity manager，你能使用am去模拟各种系统的行为，例如去启动一个activity，强制停止进程，发送广播进程，修改设备屏幕属性等等。
+
+就是Android上的应用调试器，给开发者用的。
+
+termux-elf-cleaner：elf文件处理工具
 
 termux-exec：下面介绍
 
  * 手动安装deb包
  
 dpkg -i ./xxx.deb 
-
 
 4.软件包管理
 
@@ -324,10 +323,14 @@ tsudo command
 包含ssh,scp,sftp,sshd,sftpd，ssh-keygen等多个程序。
 
 sshd是ssh服务守护进程，ssh则是客户端。
- 
+
+Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的ssh公钥输出到`~/.ssh/authorized_keys`这个文件内。
+
+如要在外部网络访问可以使用frp和ngrok将你的Server端口映射到公网上，如梯子钱充够了也可按官方教程使用tor进行端口映射。
+
  * proot
 
-proot是chroot的用户空间实现，一个简单的容器应用。
+proot是`chroot``mount --bind`的用户空间实现，一个简单的容器应用。
 
 termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构，外加模拟root权限。
 
@@ -339,10 +342,6 @@ proot使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUse
 
 Fedora,kali,Arch,debian，ubuntu，alpine……
 
-连接方式：
-
-图形环境用VNC或Xserver皆可，Xserver更快，VNC更方便。
-
 安装：
 
 官方建议见此处:https://wiki.termux.com/wiki/PRoot
@@ -351,11 +350,8 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 选择发行版:
 
-如果只是想玩桌面，fetora足矣。如果电脑桌面OS已经是linux了，那么请自选。
-
 桌面环境：
 
-别用什么lxde了，openbox这种WM才是最好的选择。
 
  * curl & wget 
  
@@ -407,7 +403,7 @@ nginx
 ```
 默认端口8080。
 
- * apache
+ * apache2
  
 ```shell
 apt install apache2
@@ -425,7 +421,6 @@ tor网络客户端。
  * linuxutil&busybox&coreutil
  
 包含whatis，netcat等实用linux小工具 
-
 
  * game
  
@@ -531,18 +526,6 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 
 如果需要修改、上传文件，那还是用sftp吧。
 
-[+]Remoteshell
-
-Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的ssh公钥输出到`~/.ssh/authorized_keys`这个文件内。
-
-这对你可以使用的ssh客户端产生了一定限制，connectbot这种过于简单的客户端是无法使用了。如果你在自己可以信任的网络中进行工作，你可以使用jupyter或netcat。
-
-如要在外部网络访问可以使用frp和ngrok将你的Server端口映射到公网上，如梯子钱充够了也可按官方教程使用tor进行端口映射。
-
-mosh也可能是一个不错的选择。
-
-mosh的优势在于使用udp协议，在低速网络下很方便。
-
 [+]改造termux
  
 注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
@@ -575,13 +558,7 @@ Xorg及图形环境。
 
 目前测试版已经有图形会话选项了，但尚不稳定。
 
-[附录]am命令
-
-am全称activity manager，你能使用am去模拟各种系统的行为，例如去启动一个activity，强制停止进程，发送广播进程，修改设备屏幕属性等等。
-
-就是Android上的应用调试器，给开发者用的。
- 
-[附录]图形界面
+[附录]Termux原生图形界面
 
 见extra源，xorg还有openbox啥的。
 
