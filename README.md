@@ -6,7 +6,7 @@ Termux不完全指南
 
 命令行的艺术：https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
 
-Termux官方wiki：https:wiki.termux.com/wiki/Main_Page
+Termux官方wiki：https://wiki.termux.com/wiki/Main_Page
 
 [RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
@@ -16,7 +16,9 @@ Archwiki：https://wiki.archlinux.org
 
 1.选择shell
 
->在选择shell前，我建议你思考一会儿。bash虽老，壮心不已，简单不一定就是件坏事情。zsh和fish对新手很友好，但这不是不去学习bash的理由。学习关于bash的一切(或者边用边学)，下文对你才是有意义的。只有在bash确实无法满足你的需要时，才去考虑其他shell。shell的优势在于自动化，模块化的工作方式。只进行交互式的操作时，shell的优势很难显现。但在处理大量文件及重复性任务时，shell的威力将初显峥嵘。zsh与fish在交互性上作得很棒，但它们的语法不适用于新手(其实是我懒得学.jpg)。如果确实想要使用zsh和fish，务必为shellscript写个shebang。
+>在选择shell前，我建议你思考一会儿。bash虽然简单，但这不一定就是件坏事情。zsh和fish对新手很友好，但这不是不去学习bash的理由。学习关于bash的一切(或者边用边学)，下文对你才是有意义的。只有在bash确实无法满足你的需要时，才去考虑其他shell。
+
+>shell的优势在于自动化，模块化的工作方式。只进行交互式的操作时，shell的优势很难显现。但在处理大量文件及重复性任务时，shell的威力将初显峥嵘，bash的优势正是在于写脚本，它有比tcsh更好的shell语法(但很多资深开发者只用tcsh)。zsh与fish在交互性上作得很棒，但它们的语法不适用于新手(其实是我懒得学.jpg)。如果确实想要使用zsh和fish，务必为shellscript写个shebang指向bash。
 
  * bash
 ![bash](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/bash.png)
