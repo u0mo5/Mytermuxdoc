@@ -10,9 +10,13 @@ Termux官方wiki：https:wiki.termux.com/wiki/Main_Page
 
 [RE:0从零开始的Termux](https://github.com/breathiness/learn-termux)
 
+Archwiki：https://wiki.archlinux.org
+
 [+]初始化
 
 1.选择shell
+
+>在选择shell前，我建议你思考一会儿。bash虽老，壮心不已，简单不一定就是件坏事情。zsh和fish对新手很友好，但这不是不去学习bash的理由。学习关于bash的一切(或者边用边学)，下文对你才是有意义的。只有在bash确实无法满足你的需要时，才去考虑其他shell。shell的优势在于自动化，模块化的工作方式。只进行交互式的操作时，shell的优势很难显现。但在处理大量文件及重复性任务时，shell的威力将初显峥嵘。zsh与fish在交互性上作得很棒，但它们的语法不适用于新手(其实是我懒得学.jpg)。如果确实想要使用zsh和fish，务必为shellscript写个shebang。
 
  * bash
 ![bash](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/bash.png)
@@ -32,7 +36,7 @@ Termux默认只定义了bash提示符为`$`,不包括当前路径，未免不太
 修改方法：`nano ~/.bashrc`，然后修改提示符变量PS1为
 
 ```shell
-PS1='[\w]'
+export PS1='[\w]'
 ```
 
 `\w`意为当前路径，必须处于单引号包裹中。
@@ -47,6 +51,7 @@ bash不会很漂亮，但补全还是有的。
 
 ```shell
 apt install bash-completion
+echo "source $PREFIX/share/bash-completion/bash_completion" >> ~/.bashrc
 ```
 
  * zsh
@@ -320,6 +325,8 @@ tsudo command
  
  * openssh
  
+openssh是linux上最流行的ssh实现。 
+ 
 包含ssh,scp,sftp,sshd,sftpd，ssh-keygen等多个程序。
 
 sshd是ssh服务守护进程，ssh则是客户端。
@@ -327,6 +334,15 @@ sshd是ssh服务守护进程，ssh则是客户端。
 Termux的sshd默认端口为8022，不支持密码登录，必须将你自己的ssh公钥输出到`~/.ssh/authorized_keys`这个文件内。
 
 如要在外部网络访问可以使用frp和ngrok将你的Server端口映射到公网上，如梯子钱充够了也可按官方教程使用tor进行端口映射。
+
+管理sshd
+
+```shell
+#启动
+sshd
+#关闭
+lsof -i | grep sshd | awk '{print $1}' | xargs kill
+```
 
  * proot
 
