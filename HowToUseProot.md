@@ -64,15 +64,11 @@ unset LD_PRELOAD
 
 用`-i uid:gid`来指定自己启动proot时的登录用户。
 
-[$]设定shell变量与登录shell
-
-注:这一步没有在proot的帮助中出现，但的确需要完成。
+[$]启动shell
 
 ```shell
-/usr/bin/env
-#不明白
--i
-#不明白，但非常重要。
+/usr/bin/env -i
+#使用env这个程序来设定环境变量与启动shell
 HOME=/home
 #设定Home目录
 TERM="xterm-256color"
