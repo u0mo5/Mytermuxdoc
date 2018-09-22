@@ -1,3 +1,6 @@
+metasploit一键安装包by KnifeFire@tieba.baidu.com
+
+原版由Auxilus@github.com制作。
 
 ```shell
 curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/Metasploit/msf.deb

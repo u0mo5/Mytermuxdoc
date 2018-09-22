@@ -4,13 +4,13 @@
 apt install curl
 curl -O https://Auxilus.github.io/auxilus.key
 apt-key add auxilus.key
-rm auxilus.key
+rm auxilus.key 2> /dev/null
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
 #fix missing
 #暂时无法修复
 curl -O https://its-pointless.github.io/setup-pointless-repo.sh
 bash setup-pointless-repo.sh
-rm setup-pointless-repo.sh
+rm setup-pointless-repo.sh 2> /dev/null
 #mirror&&extra
 apt install gnupg-curl dirmngr
 apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
