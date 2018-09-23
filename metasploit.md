@@ -24,12 +24,17 @@ apt install ruby=2.4.5 ruby-dev=2.4.5
 
 ```shell
 #install deb package
-pkg install autoconf bison clang coreutils curl findutils git apr apr-util libffi-dev libgmp-dev libpcap-dev postgresql-dev readline-dev libsqlite-dev openssl-dev libtool libxml2-dev libxslt-dev ncurses-dev pkg-config wget make ruby-dev libgrpc-dev termux-tools ncurses ncurses-utils libsodium-dev termux-exec
+apt update
+apt install -y autoconf bison clang coreutils curl findutils git apr apr-util libffi-dev libgmp-dev libpcap-dev postgresql-dev readline-dev libsqlite-dev openssl-dev libtool libxml2-dev libxslt-dev ncurses-dev pkg-config wget make ruby-dev libgrpc-dev termux-tools ncurses-utils ncurses unzip zip tar postgresql termux-elf-cleaner
+#
 #Get the metasploit-framework repository
 curl -L https://github.com/rapid7/metasploit-framework/archive/4.16.2.tar.gz | tar xz
 cd metasploit-framework-4.16.2
+#remove bad script/移除脚本
 rm modules/auxiliary/gather/http_pdf_authors.rb
+#fix shebang
 termux-fix-shbang msf*
+#install bundler
 gem install bundler
 ```
 
