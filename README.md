@@ -86,11 +86,25 @@ bash install.sh
 
 可以通过编辑`$HOME/.zshrc`中的`ZSH_THEME`来更换主题
 
-* zsh-syntax-highlighting
+ * zsh-syntax-highlighting
  
 https://github.com/zsh-users/zsh-syntax-highlighting 
 
 默认包含于Cabbagec的脚本中。
+
+ * zsh-autosuggestions
+ 
+[![CircleCI](https://circleci.com/gh/zsh-users/zsh-autosuggestions.svg?style=svg)](https://circleci.com/gh/zsh-users/zsh-autosuggestions) 
+
+为zsh增加一个像fish一样的智能命令建议，从shell历史中匹配可能的命令。
+
+安装:
+
+```shell
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+#启动时运行
+echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+```
 
 # * fish
  
@@ -140,13 +154,21 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 # [附录]:More about shell
 
->如果不会用shell，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
+>如果不会用shell，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
+
+>顺便骂一句，**AT&T！
+
+ * 手写zshrc
 
 上面我们说到oh-my-zsh这个zsh配置框架，它很方便，但不够快！如果你是个热爱动手的人，那么是时候自已写zshrc了！
 
 Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/index.php/Zsh_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
 因为termux无需设定PATH一类的环境变量，所以我们只需要自己写PS1就行了！
+
+ * Xonsh
+ 
+Xonsh是个用python写的shell，兼容bash。 奇特之处在于它同时支持bash&python语法，甚至可以混合使用！
 
 
 # 2.选择文本编辑器
@@ -335,7 +357,7 @@ tsudo command
  
 轻量的cliftp客户端。
  
- * openssh
+# openssh
  
 openssh是linux上最流行的ssh实现。 
  
@@ -356,9 +378,21 @@ sshd
 lsof -i | grep sshd | awk '{print $1}' | xargs kill
 ```
 
- * proot
+ * 何为公私钥?
 
-proot是`chroot``mount --bind`的用户空间实现，一个简单的容器应用。
+ssh使用一对密钥完成加密/解密过程，被分发给他人的是公钥，自己留着的是私钥。对sshd来说，用户只持有sshd生成的公钥，sshd自己则保留私钥。
+
+ssh的密钥在~/.ssh下，sshd的密钥在$PREFIX/etc/ssh下。
+
+公私钥加密涉及非对称加密，以我的数学水平尚无法解释。
+
+ * 配置文件
+ 
+termux的ssh配置异常简单，无需任何更改。 
+
+# proot
+
+proot是`chroot`及`mount --bind`的用户空间实现，一个简单的容器应用。
 
 termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构，外加模拟root权限。
 
@@ -376,9 +410,24 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 隔壁群群主的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
-选择发行版:
+# [附录]选择发行版
 
-桌面环境：
+ubuntu桌面很好，Fedora追求新潮技术，Arch更新极快，alpine极致轻量，debian老牌稳定。那么选什么好?
+
+Arch,别名洗发水，在各大论坛总有人推荐的坑人玩意。更新奇快，快到爆炸(连Arch官方都承认Arch极易崩溃)，想用桌面千万别装Arch。
+
+Ubuntu,别名内部错误，好了不多喷，装Xfce不用GNOME就是了。
+
+Debian，别名**，老牌稳定，配置简单，桌面也还不错。
+
+Fedora，别名地沟油。
+
+
+# [附录]桌面环境
+
+经常看到别人乐滋滋晒lxde？其实，像openbox这种WM才是手机最好的选择。
+
+关于桌面怎么装，当然Archwiki最有发言权。先装Xorg，其他自由发挥。
 
 
  * curl & wget 
