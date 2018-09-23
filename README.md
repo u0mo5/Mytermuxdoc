@@ -502,10 +502,9 @@ tor网络客户端。
 ```shell
 nano $PREFIX/etc/tor/torrc
 #############以下为torrc内容##########
-## Enable TOR SOCKS proxy
+#Enable TOR SOCKS proxy
 SOCKSPort 127.0.0.1:9050
-
-## Hidden Service: Http
+#Hidden Service: Http
 HiddenServiceDir /data/data/com.termux/files/home/.tor/hiddenservice
 HiddenServicePort 80 127.0.0.1:8080
 ############结束################
