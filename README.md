@@ -489,10 +489,33 @@ apt install apache2
 apache2ctl start
 ```
  
- * tor
+# tor
  
-tor网络客户端。 
+tor网络客户端。
+
+ * 创建tor域名
  
+注：全部操作只适用于termux。
+
+只对nginx开启的http服务进行了映射，需要映射其他服务请自行更改配置。
+
+```shell
+nano $PREFIX/etc/tor/torrc
+#############以下为torrc内容##########
+## Enable TOR SOCKS proxy
+SOCKSPort 127.0.0.1:9050
+
+## Hidden Service: Http
+HiddenServiceDir /data/data/com.termux/files/home/.tor/hiddenservice
+HiddenServicePort 80 127.0.0.1:8080
+############结束################
+mkdir /data/data/com.termux/files/home/.tor/hiddenservice
+tor
+#切换到新会话
+cat ~/tor/hiddenservice/hostname
+#显示的内容就是你的tor域名。
+```
+
  * mutt
  
 邮件客户端。 
