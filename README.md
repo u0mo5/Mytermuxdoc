@@ -16,7 +16,7 @@ Archwiki：https://wiki.archlinux.org
 
 # 1.选择shell
 
-#  * bash
+# bash
 ![bash](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/bash.png)
  
 bash是Termux及大多数linux发行版的默认shell(但Termux还默认安装了dash)
@@ -31,10 +31,10 @@ Termux默认只定义了bash提示符为`$`,不包括当前路径，未免不太
 
 本人修改bash提示符为['当前路径']，这已经够我用了。
 
-修改方法：`nano ~/.bashrc`，然后修改提示符变量PS1为
+修改方法：`nano ~/.bashrc`，然后修改提示符变量PS1。
 
 ```shell
-export PS1='[\w]'
+export PS1='[\w]\$'
 ```
 
 `\w`意为当前路径，必须处于单引号包裹中。
@@ -53,7 +53,7 @@ echo "source $PREFIX/share/bash-completion/bash_completion" >> ~/.bashrc
 ```
 然后输入命令时按Tab键，就可以补全参数了。顺带一说，直接在bash会话中按Tab可以补全目录和文件名。
 
-#  * zsh
+# zsh
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.jpg)
 
 zsh是一个现代化的shell，兼容部分bash语法。
@@ -65,7 +65,7 @@ apt install zsh
 ```
 启动文件为$HOME/.zshrc
 
-#  * oh-my-zsh
+# oh-my-zsh
 ![ohmyzsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/oh-my-zsh.png) 
  
 zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行配置
@@ -108,7 +108,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 ```
 
-# * fish
+# fish
  
 安装:`apt install fish`
 
@@ -118,13 +118,23 @@ fish是开箱即用型shell,UI风格对用户非常友好。
 
 ```shell
 #ohmyfish安装
-curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/fishsetup.sh
-bash fishsetup.sh
+apt install fish curl
+curl -L https://get.oh-my.fish > install
+fish install --path=~/.local/share/omf --config=~/.config/omf
+exec fish
+#安装主题
+omf install agnoster
+#配置字体
+mkdir ~/.termux
+cd ~/.termux
+curl https://raw.githubusercontent.com/powerline/fonts/master/UbuntuMono/Ubuntu%20Mono%20derivative%20Powerline.ttf -o font.ttf
+#切换shell
+chsh -s fish
 ```
 
 注：fish不兼容bash的script语法。
 
-#  * 冷水
+# 冷水
  
 1.ohmyzsh可能因为某些因素卡死你的终端！ 
 
@@ -132,13 +142,15 @@ bash fishsetup.sh
 
 3.用了oh-my-zsh后报错很难看(这是我换用bash的真正原因)。
 
+
+
 注：[Termux Shell列表](https://wiki.termux.com/wiki/Shells) 
 
 注：在Termux的shell会话中可通过输入`exit 0`来关闭一个shell会话，Ctrl-d也可。
  
 注：在Termux中长按屏幕左边滑出的'keyboard'可打开一些特殊键
  
-#  * Termux启动的是登录Shell吗？
+# Termux启动的是登录Shell吗？
  
 从'echo $0'的输出来看，bash以非登录shell的模式启动。
 
@@ -146,7 +158,7 @@ bash fishsetup.sh
 
 注：Termux的bash启动文件'profile'中source了'$PREFIX/etc/bash.bashrc'和'$HOME/.bashrc'，etc目录内的'bash.bashrc'先于home目录内的'.bashrc'被读取。
  
-#  * Termux上的chsh是什么？
+# Termux上的chsh是什么？
  
 Linux上的chsh通过修改`/etc/passwd`文件来改变用户的启动Shell，那Termux这个单用户机制的应用呢？
 
@@ -172,6 +184,7 @@ Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/ind
  
 Xonsh是个用python写的shell，兼容bash。 奇特之处在于它同时支持bash&python语法，甚至可以混合使用！
 
+ * 隐藏在zsh中的神秘力量
 
 # 2.选择文本编辑器
 
@@ -227,25 +240,6 @@ source ~/.vim/vimrc
 
 # 3.选择软件源
 
-termux的官方源软件包齐全，但没有打包好的python和ruby依赖包。像pynacl这类包含c库依赖的模块一般无法正常安装。同时官方源不保留旧版本软件包。想安旧版可以试试`Tuna`，这是由中国某大学维护的软件源，支持Termux。还有由xeffyr维护的Termux Mirror。某些源包含openjdk这类官方源中不包含的软件包(Extra源)。在`$PREFIX/etc/apt/source.list`加入一行`deb https://termux.xeffyr.ml/ extra main x11`即可。
-
-简单操作一下：
-
-```shell
-apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
-echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/source.list
-```
-
- * 注：extra源的编译脚本与补丁由github用户xeffyr提供。
-
-通过更换第三方源甚至可以安装metasploit，在官方wiki可见。
-
-https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,aircrack-ng,tcpdump的脚本。
-
-同时termux官方给出了一个python脚本，帮助用户构建自己的deb包。
-
-一键配置所有第三方源:`curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/setup/sources.sh`
-
  * Termux第三方源列表
 
 [1]Tuna镜像源
@@ -258,7 +252,40 @@ https://github.com/termux/termux-root-packages 这个仓库内有编译libusb,ai
 
 [5]由Grimler91维护的rootpackage源
 
-[6]its-pointless
+[6]its-pointless源，含gcc
+
+ * 手动添加源
+ 
+```shell
+apt install gnupg-curl dirmngr curl
+
+#metasploit-framework源
+apt-key add <$(curl https://Auxilus.github.io/auxilus.key)
+echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
+#目前不可用
+
+#mirror&&extra源
+apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
+echo 'deb https://termux.xeffyr.ml/ stable main' >> $PREFIX/etc/apt/sources.list
+echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/sources.list
+
+#root源
+apt-key adv --keyserver pgp.mit.edu --recv A46BE53C
+mkdir -p $PREFIX/etc/apt/sources.list.d
+echo "deb https://grimler.se root stable" > $PREFIX/etc/apt/sources.list.d/termux-root.list
+
+#its-pointless源
+apt-key add <$(curl https://its-pointless.github.io/pointless.gpg)
+mkdir $PREFIX/etc/apt/sources.list.d
+echo "deb [trusted=yes] https://its-pointless.github.io/files/ termux extras" > $PREFIX/etc/apt/sources.list.d/pointless.list
+
+#x11源
+apt-key adv --keyserver pool.sks-keyservers.net --recv 45F2964132545795
+echo "deb https://termux-x11.ml x11 main" >> $PREFIX/etc/apt/sources.list
+
+#更新aptcache
+apt update
+```
 
  * 后缀为dev的deb包是什么？
 
@@ -292,9 +319,7 @@ termux-elf-cleaner：elf文件处理工具
 
 termux-exec：下面介绍
 
- * 手动安装deb包
- 
-dpkg -i ./xxx.deb 
+
 
 # 4.软件包管理
 
@@ -315,6 +340,10 @@ termux自带apt，基于apt封装了一个pkg命令
  * apt的本质
  
 基于dpkg封装的自动化包管理器。
+
+ * 手动安装deb包
+ 
+dpkg -i ./xxx.deb 
 
  * 为什么不能兼容debian系发行版的deb包(那怕架构相同)？
  
@@ -337,11 +366,14 @@ http://www.sqlsec.com/2018/05/termux.html
 
 不过现实还差得远呢。
 
-$TERMUX_PACKAGE
+# TERMUX_PACKAGE
 
 termux可安装的linux应用介绍。
 
- * tsu
+
+
+
+# tsu
  
 tsu是Termux独有的su程序，允许用户以root权限运行Termux内的linux应用。
 
@@ -355,10 +387,34 @@ tsu
 tsudo command
 ```
  
- * lftp
+# lftp
  
-轻量的cliftp客户端。
+轻量的cliftp客户端，交互式操作。
+
+```shell
+#使用以下命令登录ftp服务器：
+lftp ftp://用户名[:密码]@服务器地址[:端口]
+#标准方式，推荐
+#如果不指定端口，默认21端口
+#如果不在命令中使用明文输入密码，连接时会询问密码(推荐)
+#可以使用“书签”收藏服务器站点，也可以在lftp中为当前站点定义别名：
+lftp >bookmark           #显示所有收藏
+lftp >bookmark add <别名>  #使用 别名 收藏当前站点
+#使用别名登录 ftp服务器：
+lftp <别名>
+#文件下载
+#单个文件
+lftp >get <name>	 
+#目录	
+lftp >mirror <dirname>
+```
+ * windows支持
  
+```shell 
+lftp >set ftp:charset gbk   #设置远程编码为gbk
+lftp >set file:charset utf8 #设置本地编码(Linux系统默认使用 UTF-8，这一步通常可以省略)  
+```
+
 # openssh
  
 openssh是linux上最流行的ssh实现。 
@@ -432,7 +488,7 @@ Fedora，别名地沟油。
 关于桌面怎么装，当然Archwiki最有发言权。先装Xorg，其他自由发挥。
 
 
- * curl & wget 
+# curl & wget 
  
 普通的下载器(-_-)……
 
@@ -448,7 +504,7 @@ wget就略单薄一点，只有http和ftp(加上ssl)支持。
 
 例如在美剧Mr.Robot中，主角用wget拿了个服务器低权限shell，然后开始提权&搞破坏……
 
- * aria2
+# aria2
  
 强悍的cli下载器，支持Metalink等现代下载技术。 
 
@@ -463,11 +519,11 @@ aria2c --enable-rpc --rpc-listen-all
 ```
 然后可以用transdroid方便地从127.0.0.1:6800连接了，下载奇快！
 
- * weechat&irssi
+# weechat&irssi
  
 Irc聊天用 
  
- * nginx
+# nginx
  
 高性能http服务器。 
 
@@ -481,13 +537,6 @@ termux-chroot
 nginx
 ```
 默认端口8080。
-
- * apache2
- 
-```shell
-apt install apache2
-apache2ctl start
-```
  
 # tor
  
@@ -509,21 +558,21 @@ HiddenServiceDir /data/data/com.termux/files/home/.tor/hiddenservice
 HiddenServicePort 80 127.0.0.1:8080
 ############结束################
 mkdir /data/data/com.termux/files/home/.tor/hiddenservice
-tor
+tor&
 #切换到新会话
 cat ~/tor/hiddenservice/hostname
 #显示的内容就是你的tor域名。
 ```
 
- * mutt
+# mutt
  
 邮件客户端。 
  
- * linuxutil&busybox&coreutil
+# busybox
  
-包含whatis，netcat等实用linux小工具 
+实用linux小工具集合，默认已安装。
 
- * game
+# game
  
 gnuchess,gnugo啥的。
 
@@ -531,7 +580,12 @@ extra源有doxbox,stable源有fontz，玩些字符游戏没问题！
 
 apt search game可以找到更多游戏！
 
-$TERMUX_COMMON
+
+
+
+
+
+# TERMUX_COMMON
 
 Termux日常使用帮助。
 
@@ -627,7 +681,7 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 
 如果需要修改、上传文件，那还是用sftp吧。
 
-[+]改造termux
+[+]shell script
  
 注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
 
