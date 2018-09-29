@@ -30,9 +30,9 @@ apt install -y autoconf bison clang coreutils curl findutils git apr apr-util li
 #Get the metasploit-framework repository
 curl -L https://github.com/rapid7/metasploit-framework/archive/4.16.2.tar.gz | tar xz
 cd metasploit-framework-4.16.2
-#remove bad script/移除脚本
+#remove bad script/移除坏的脚本
 rm modules/auxiliary/gather/http_pdf_authors.rb
-#fix shebang
+#fix shebang/修改shebang
 termux-fix-shbang msf*
 #install bundler
 gem install bundler
@@ -46,6 +46,8 @@ gem install bundler
 sed 's|nokogiri (*|nokogiri (1.8.0)|g' -i Gemfile.lock  
 gem install nokogiri -v'1.8.0' -- --use-system-libraries
 ```
+如报错，自己用nano把Gemfile.lock中的nokogiri版本换成1.8.0
+
 为何单独安装nokogiri？
 
 共享库惹的祸。

@@ -8,6 +8,10 @@ apt install -y autoconf bison clang coreutils curl findutils git apr apr-util li
 curl -O https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/Metasploit/msf.deb
 dpkg -i ./msf.deb
 ```
-
-数据库无法连接很正常，目前无解决方案。
+启动：
+```shell
+pg_ctl -D $PREFIX/var/lib/postgresql start
+msfconsole
+```
+注：数据库无法连接很正常，目前无解决方案。
 

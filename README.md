@@ -12,6 +12,8 @@ Termux官方wiki：https://wiki.termux.com/wiki/Main_Page
 
 Archwiki：https://wiki.archlinux.org
 
+Linux基础工具使用指南：https://i.linuxtoy.org/docs/guide/ch17.html
+
 [+]初始化
 
 # 1.选择shell
@@ -185,6 +187,18 @@ Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/ind
 Xonsh是个用python写的shell，兼容bash。 奇特之处在于它同时支持bash&python语法，甚至可以混合使用！
 
  * 隐藏在zsh中的神秘力量
+ 
+数学支持： 
+ 
+```shell
+#载入数学函数模块 可以进行一些比较高级的运算
+#（也可以将此句写在配置文件中）
+% echo "zmodload zsh/mathfunc" >> ~/.zshrc
+% exec zsh
+#$((数学表达式)) 进行运算，使用 echo 显示结果
+% echo $(( sin(1/4.0)**2 + cos(1/4.0)**2 - 1 ))
+-1.1102230246251565e-16
+```  
 
 # 2.选择文本编辑器
 
@@ -487,6 +501,8 @@ Fedora，别名地沟油。
 
 关于桌面怎么装，当然Archwiki最有发言权。先装Xorg，其他自由发挥。
 
+真的懒，可以看这里：https://i.linuxtoy.org/docs/guide/ch19.html
+
 
 # curl & wget 
  
@@ -580,8 +596,29 @@ extra源有doxbox,stable源有fontz，玩些字符游戏没问题！
 
 apt search game可以找到更多游戏！
 
+# lighttpd
 
+Lighttpd是一个新兴的、轻量级的 web 服务器，它开始越来越多的应用在一些重要场合，如：YouTobe、Sourceforge、豆瓣……
 
+Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布式连接环境做了优化，支持 FastCGI, CGI, Auth, 输出压缩(output compress), URL重写, Alias 等重要功能。
+
+使用与配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
+
+# command-not-found
+
+在你试图执行一个不存在的命令时，提醒你如何安装此应用。
+
+# GNUscreen&tmux
+
+终端复用工具。
+
+# macchanger
+
+修改mac工具。
+
+# db
+
+后缀名为db的数据库文件的编辑器。
 
 
 
@@ -682,14 +719,6 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 如果需要修改、上传文件，那还是用sftp吧。
 
 [+]shell script
- 
-注：需要提前学习一些Linux知识，可以先用proot运行的发行版练练手。
-
-前面提到了termux上一些特色package其实是bashscript，那么，可以通过自己编写脚本来实现一些自定义功能
-
-例如，为bash上一把密码锁。
-
-现成的实现在此https://github.com/myfreess/termux-bashlock
 
 [+]与Android交互
 

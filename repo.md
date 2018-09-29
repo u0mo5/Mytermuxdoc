@@ -87,7 +87,7 @@ pip install $ModuleName
  
  [1]使用了错误的pip版本。
  
- [2]此模块需连接C库。
+ [2]此模块需连接C共享库。
  
 先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则寻找报错信息中有无`include<xxx.h>`。 若有，则安装对应的dev包和lib包即可。
 
@@ -172,6 +172,7 @@ npm install
 ```
 
  * npm安装任意包都报错？
+ 
 解决方案:https://github.com/rvagg/node-worker-farm/commit/0b2349c6c7ed5c51e234e418fad226875313e773
 
 手动解决
