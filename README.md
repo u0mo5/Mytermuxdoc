@@ -271,7 +271,7 @@ source ~/.vim/vimrc
  * 手动添加源
  
 ```shell
-apt install gnupg-curl dirmngr curl
+apt install gnupg dirmngr curl
 
 #metasploit-framework源
 apt-key add <$(curl https://Auxilus.github.io/auxilus.key)
