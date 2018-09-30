@@ -274,7 +274,7 @@ source ~/.vim/vimrc
 apt install gnupg dirmngr curl
 
 #metasploit-framework源
-apt-key add <$(curl https://Auxilus.github.io/auxilus.key)
+curl https://Auxilus.github.io/auxilus.key | apt-key add
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
 #目前不可用
 
@@ -289,7 +289,7 @@ mkdir -p $PREFIX/etc/apt/sources.list.d
 echo "deb https://grimler.se root stable" > $PREFIX/etc/apt/sources.list.d/termux-root.list
 
 #its-pointless源
-apt-key add <$(curl https://its-pointless.github.io/pointless.gpg)
+curl https://its-pointless.github.io/pointless.gpg | apt-key add
 mkdir $PREFIX/etc/apt/sources.list.d
 echo "deb [trusted=yes] https://its-pointless.github.io/files/ termux extras" > $PREFIX/etc/apt/sources.list.d/pointless.list
 
