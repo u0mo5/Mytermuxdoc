@@ -74,13 +74,9 @@ zsh的配置相当麻烦，所以一般使用oh-my-zsh这个一键脚本进行�
  
 termux有一键安装oh-my-zsh的脚本，可以更换终端配色与字体。
 
-酷安原帖：
+酷安原帖：https://www.coolapk.com/feed/2439237 
 
-分享 ZJJ03的评论：我又来啦😎！之前那个 oh-my-termux 作者好像好久不更了，窝刚刚把它 fork 过来自己改了一个，除了给你装 oh-my-zsh 环境外，窝还添加了大概40多种不同的配色方案，还写了个脚本帮你替换配色[二哈]。项目叫 termux-ohmyzsh，地址在此 http://t.cn/RMhNJAb 
-
-[二哈]选择强迫症会不会很难受？那么多配色有得挑了。
-
-默认配色方案是我最喜欢的 Tango 。运行 ~/.termux/colors.sh 可以自己挑喜欢的，输入数字.. 分享自@酷安网  https://www.coolapk.com/feed/2439237 
+~/.termux/colors.sh可选择配色方案，~/.termux/fonts.sh可更换字体。
 
 安装:
 
@@ -134,6 +130,8 @@ fish install --path=~/.local/share/omf --config=~/.config/omf
 exec fish
 #安装主题
 omf install agnoster
+#或者
+omf install bobthefish
 #配置字体
 mkdir ~/.termux
 cd ~/.termux

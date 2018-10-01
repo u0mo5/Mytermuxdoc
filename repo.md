@@ -99,6 +99,8 @@ pip install $ModuleName
 
 当没有可用方案时，可以自行创建一个issues，有时实际情况的确难以由用户自行解决。
 
+看看这里也行：https://wiki.termux.com/wiki/Instructions_for_installing_python_packages
+
 搜索引擎永远是我们的好帮手，经统计常见问题大概三分钟出解决方案，下面以pynacl的安装为例。官方的解决方案比较复杂，第三方方案则相当简单。
 
 ```shell
