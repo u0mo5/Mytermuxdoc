@@ -486,7 +486,7 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 官方建议见此处:https://wiki.termux.com/wiki/PRoot
 
-隔壁群群主的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
+隔壁群管理的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
 # [附录]选择发行版
 
