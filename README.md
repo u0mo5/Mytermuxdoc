@@ -76,7 +76,7 @@ termux有一键安装oh-my-zsh的脚本，可以更换终端配色与字体。
 
 酷安原帖：https://www.coolapk.com/feed/2439237 
 
-~/.termux/colors.sh可选择配色方案，~/.termux/fonts.sh可更换字体。
+安装完成后使用`~/.termux/colors.sh`可选择配色方案，`~/.termux/fonts.sh`可更换字体。
 
 安装:
 
@@ -345,7 +345,7 @@ termux-exec：下面介绍
 
 termux自带apt，基于apt封装了一个pkg命令
 
-`apt install $package` 或 `pkg install $package` 是一样的。
+`apt install $package` 或 `pkg install $package` 一样可以安装软件。
 
 但我建议使用apt，这样做可以让你在将来快速适应deb系的发行版。
 
@@ -492,13 +492,13 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 ubuntu桌面很好，Fedora追求新潮技术，Arch更新极快，alpine极致轻量，debian老牌稳定。那么选什么好?
 
-Arch,别名洗发水，在各大论坛总有人推荐的坑人玩意。更新奇快，快到爆炸(连Arch官方都承认Arch极易崩溃)，想用桌面千万别装Arch。
+Arch,别名洗发水，在各大论坛总有人推荐的坑人玩意。更新奇快，快到爆炸(连Arch官方都承认Arch极易崩溃)。
 
 Ubuntu,别名内部错误，好了不多喷，装Xfce不用GNOME就是了。
 
 Debian，别名**，老牌稳定，配置简单，桌面也还不错。
 
-Fedora，别名地沟油。
+Fedora，别名地沟油，因为疯狂追求新技术导致常年新版跳票/不稳定。
 
 
 # [附录]桌面环境
@@ -620,7 +620,7 @@ Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布�
 
 # macchanger
 
-修改mac工具。
+修改mac地址工具。
 
 # db
 
@@ -753,6 +753,8 @@ Xorg及图形环境。
 见extra源，xorg还有openbox啥的。
 
 有文一篇https://yadominjinta.github.io/2018/07/30/GUI-on-termux.html
+
+有项目一个:https://github.com/Hax4us/guitmux
 
 
 

@@ -2,7 +2,7 @@ repo.md
 
 本文将在五分钟内让你学会git,python,ruby,golang的基础用法，并学会关于各大流行编程语言的简单知识。
 
- * git基本用法
+# git基本用法
  
 ```shell
 git clone $repourl $dirname
@@ -35,7 +35,7 @@ git pull
 更新repo
 
  
- * python(2或3)
+# python(2或3)
  
 python 是目前全世界最流行的编程语言，分为2和3两个版本
 
@@ -87,7 +87,7 @@ pip install $ModuleName
  
  [1]使用了错误的pip版本。
  
- [2]此模块需连接C共享库。
+ [2]此模块部分用C编写，需编译。
  
 先试着安装`python-dev pkg-config clang`等编译所需工具,如果仍然报错则寻找报错信息中有无`include<xxx.h>`。 若有，则安装对应的dev包和lib包即可。
 
@@ -108,6 +108,7 @@ apt install clang python python-dev libsodium libsodium-dev
 export SODIUM_INSTALL=system
 pip install pynacl
 ```
+注：编译需要较多电量与时间。
 
 原解决方案出处:Pypi
 
@@ -119,10 +120,36 @@ $ pip install pynacl
 If you’d prefer to use the version of libsodium provided by your distribution, you can disable the bundled copy during install by running:
 $ SODIUM_INSTALL=system pip install pynacl
 ```
- 
- * 为何会这样？
+# scrapy安装
+
+scrapy是python中一个著名的爬虫模块，但它的依赖之一cryptography安装极其复杂。
+
+issues:https://github.com/termux/termux-packages/issues/2847
+
+首先，用`uname -m`查看自己的手机(或chrome本)cpu架构，根据结果选择方案。
+
+aarch64与arm架构请前往issues下载xeffyr编译的openssl包。
+
+x86架构则需自行编译openssl。编译时加入no-engine选项。(真的惨)
+
+注：不要使用版本1.1以下的openssl包，这会破坏apt。
+
+如果只安装cryptography，那么准备已经结束。
+
+scrapy：
+
+```shell
+pkg install libffi-dev libxml2-dev libxslt-dev
+ln -s $PREFIX/include/libxml2/libxml $PREFIX/include/libxml
+pip3 install scrapy
+#安装步骤来自YadominJinta@github
+```
+
+* 为何会这样？
  
  termux尽管基于debian,官方行事却有Arch之风，连保留旧版软件包都不愿意。为python依赖打deb包啥的更是不可能了
+ 
+ its-pointless@github维护的社区源中有scipy和numpy模块。
  
  * 曲线救国之法
  
@@ -159,7 +186,7 @@ bundle install
  
  * 常见问题
  
-C库依赖……仍用运行发行版后`apt install ruby-$module`解决，如果想折腾，自己认真看看报错即可，仍然建议多看Termux的issues。
+编译问题……仍用运行发行版后`apt install ruby-$module`解决，如果想折腾，自己认真看看报错即可，仍然建议多看Termux的issues。
 
 注：google翻译是个好东西。
  

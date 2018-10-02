@@ -112,3 +112,15 @@ https://github.com/myfreess/Termux-writer
 专为懒人设计，Termux上的proot脚本模板生成器。
 
 
+[附录]启动之后
+
+别急着高兴，还有些问题没有被解决。
+
+ * /etc/resolv.conf
+ 
+```shell
+#若此文件为空，则
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+```
+
+
