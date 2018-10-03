@@ -682,21 +682,21 @@ Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布�
 
 后缀名为db的数据库文件的编辑器。
 
-#rsync
+# rsync
 
 专业级文件备份工具。
 
-#stunnel
+# stunnel
 
 使用SSH封装非加密服务的工具。
 
-#lynx&w3m
+# lynx&w3m
 
 命令行下的web浏览器。
 
 坑b。
 
-#nnn
+# nnn
 
 一款命令行文件管理器。
 
