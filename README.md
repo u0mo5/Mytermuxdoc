@@ -549,8 +549,8 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 隔壁群管理的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
-# [附录]选择发行版
-
+# [附录]选择Linux发行版
+![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux.jpg)
 ubuntu桌面很好，Fedora追求新潮技术，Arch更新极快，alpine极致轻量，debian老牌稳定。那么选什么好?
 
 Arch,别名洗发水，在各大论坛总有人推荐的坑人玩意。更新奇快，快到爆炸(连Arch官方都承认Arch极易崩溃)。
@@ -585,7 +585,7 @@ tsudo command
 ```
 
 # Git
-
+![git](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/git.gif)
 git是一个分布式的版本控制系统。
 
 一般用户只用`git clone <repourl> <dirname>`这一个命令。
@@ -613,6 +613,10 @@ cat $HOME/.ssh/id_rsa.pub
 ```
 
 将公钥提交到github需要在浏览器内完成，此处不作演示。
+
+ * github
+![github](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/github.jpg)
+又称gayhub，干啥的我不用说了吧？
 
 # Python/Python2
  
@@ -730,7 +734,10 @@ ln -s $PREFIX/include/libxml2/libxml $PREFIX/include/libxml
 pip3 install scrapy
 #安装步骤来自YadominJinta@github.com
 ```
- 
+装好也不要太高兴，python用户的日常一般是这样的：
+
+![error](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/runtime.jpg)
+
 注：its-pointless@github维护的社区源中有python模块scipy和numpy。
 
 # Nodejs

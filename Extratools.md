@@ -1,10 +1,13 @@
-[Baidupcsgo](https://github.com/iikira/BaiduPCS-Go)百度网盘不限速下载 
+此文档中是对Termux有用，但不包含在官方仓库中的工具
+
+
+[Baidupcsgo](https://github.com/iikira/BaiduPCS-Go)百度网盘不限速下载器 
  
 [you-get] 强大的视频下载器，支持全球大多数视频网站，`pip install you-get`即可安装。
  
 [caddy](https://github.com/mholt/caddy)WebUI的文件管理器。
 
-[jupyter]方便好用的Web终端，但它还可以更强大！
+[jupyter]方便好用的Web终端，但它还可以更强大！(然而我不会python……)
 
 [mapscii]基于cli的终端地图，Nodejs编写。npm install mapscii -s即可安装。
 
