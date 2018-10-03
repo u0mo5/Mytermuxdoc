@@ -827,26 +827,30 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 
  * lighttpd
 
-Lighttpd是一个新兴的、轻量级的 web 服务器，它开始越来越多的应用在一些重要场合，如：YouTobe、Sourceforge、豆瓣……
-
-Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布式连接环境做了优化，支持 FastCGI, CGI, Auth, 输出压缩(output compress), URL重写, Alias 等重要功能。
-
 使用与配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
 
-# nginx
- 
-高性能http服务器。 
+使用:在写好config文件后使用`lighttpd -f lighttpd.conf`来启动守护进程。
 
-注：默认的普通权限无法启动 nginx。
-
-运行：
+一个简单的lighttpd.conf:
 
 ```shell
-apt install proot nginx -y
-termux-chroot
-nginx
-```
-默认端口8080。
+server.port             = 8080
+server.document-root    = "/sdcard/lighttpd/docs"
+server.upload-dirs      = ( "/data/data/com.termux/files/usr/tmp" )
+index-file.names        = ( "index.html" )
+mimetype.assign         = (
+                                ".html" => "text/html",
+                                ".txt" => "text/plain",
+                                ".css" => "text/css",
+                                ".js" => "application/x-javascript",
+                                ".jpg" => "image/jpeg",
+                                ".jpeg" => "image/jpeg",
+                                ".gif" => "image/gif",
+                                ".png" => "image/png",
+                                "" => "application/octet-stream"
+                        )
+```   	                     
+但这只能用于建设静态网站。
 
 
 [附录]Neoterm
