@@ -1097,7 +1097,7 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 
  * lighttpd
 
-使用与配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
+配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
 
 使用:在写好config文件后使用`lighttpd -f lighttpd.conf`来启动守护进程。
 
