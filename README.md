@@ -931,6 +931,15 @@ cat ~/tor/hiddenservice/hostname
 cd $PREFIX/bin
 ln -s busybox ls
 ```
+重启一次Termux也可以。
+
+原因:PATH优先级导致的问题。
+
+奇怪的是，优先级靠前的目录找不到，后面的目录就不找了?
+
+重启之后又正常了……
+
+想必bash在重启之后才刷新PATH内可执行文件的索引信息吧。
 
 # game
  
