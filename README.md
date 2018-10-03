@@ -349,6 +349,8 @@ echo 'deb https://termux.xeffyr.ml/ extra main x11' >> $PREFIX/etc/apt/sources.l
 apt-key adv --keyserver pgp.mit.edu --recv A46BE53C
 mkdir -p $PREFIX/etc/apt/sources.list.d
 echo "deb https://grimler.se root stable" > $PREFIX/etc/apt/sources.list.d/termux-root.list
+#或者
+apt install root-repo -y
 
 #its-pointless源
 curl https://its-pointless.github.io/pointless.gpg | apt-key add
@@ -358,6 +360,8 @@ echo "deb [trusted=yes] https://its-pointless.github.io/files/ termux extras" > 
 #x11源
 apt-key adv --keyserver pool.sks-keyservers.net --recv 45F2964132545795
 echo "deb https://termux-x11.ml x11 main" >> $PREFIX/etc/apt/sources.list
+#或者
+apt install x11-repo -y
 
 #更新aptcache
 apt update
@@ -467,6 +471,7 @@ http://www.sqlsec.com/2018/05/termux.html
 
 termux可安装的linux应用介绍。
 
+注：官方最近更新很快，如果文章有bug请向我提交issues。
 
 # lftp
  
