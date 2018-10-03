@@ -924,9 +924,13 @@ cat ~/tor/hiddenservice/hostname
 
  * 风险
  
-如果卸载会导致ls,cd等基础命令丢失。
+如果卸载会导致ls命令丢失。
 
-原因：Termux的bash没有内置的ls命令。
+解决方案：
+```shell
+cd $PREFIX/bin
+ln -s busybox ls
+```
 
 # game
  
