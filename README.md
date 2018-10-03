@@ -399,7 +399,7 @@ termux-exec：下面介绍
 
 # 4.软件包管理
 
-termux自带apt，基于apt封装了一个pkg命令
+termux的包管理工具是apt，基于apt封装了一个pkg命令
 
 `apt install $package` 或 `pkg install $package` 一样可以安装软件。
 
@@ -408,6 +408,12 @@ termux自带apt，基于apt封装了一个pkg命令
  * apt update
  
 更新deb包索引信息，当初次打开无法安装软件包时可运行此命令。
+
+注：因为官方源不保留旧软件包，所以最好每次安装软件包之前都update一次。
+
+ * apt remove $package
+ 
+卸载软件包。 
 
  * apt下载的deb包在哪儿？
  
@@ -419,7 +425,15 @@ termux自带apt，基于apt封装了一个pkg命令
 
  * 手动安装deb包
  
-dpkg -i ./xxx.deb 
+dpkg -i ./xxx.deb
+
+ * postinstall
+ 
+postinst这个脚本存在于很多deb包中，初次安装时它会被执行。
+
+ * 解压deb包
+ 
+dpkg -x $package $dirname 
 
  * 为什么不能兼容debian系发行版的deb包(那怕架构相同)？
  
@@ -442,12 +456,16 @@ http://www.sqlsec.com/2018/05/termux.html
 
 不过现实还差得远呢。
 
+
+
+
+
+
+
+
 # TERMUX_PACKAGE
 
 termux可安装的linux应用介绍。
-
-
-
 
 # tsu
  
@@ -597,26 +615,11 @@ aria2c --enable-rpc --rpc-listen-all
 ```
 然后可以用transdroid方便地从127.0.0.1:6800连接了，下载奇快！
 
-# weechat&irssi
+# Weechat&irssi
  
-Irc聊天用 
+Irc聊天用
  
-# nginx
- 
-高性能http服务器。 
-
->默认的普通权限无法启动 nginx, 需要模拟root权限才可以
-
-运行：
-
-```shell
-apt install proot nginx -y
-termux-chroot
-nginx
-```
-默认端口8080。
- 
-# tor
+# Tor
  
 tor网络客户端。
 
@@ -650,6 +653,18 @@ cat ~/tor/hiddenservice/hostname
  
 实用linux小工具集合，默认已安装。
 
+注：httpd暂时无法使用。[Wed Oct  3 15:36:03 CST 2018]
+
+#coreutil
+
+同busybox。
+
+ * 风险
+ 
+如果卸载会导致ls,cd等基础命令丢失。
+
+原因：Termux的bash没有内置的ls命令。
+
 # game
  
 gnuchess,gnugo啥的。
@@ -658,17 +673,9 @@ extra源有doxbox,stable源有fontz，玩些字符游戏没问题！
 
 apt search game可以找到更多游戏！
 
-# lighttpd
-
-Lighttpd是一个新兴的、轻量级的 web 服务器，它开始越来越多的应用在一些重要场合，如：YouTobe、Sourceforge、豆瓣……
-
-Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布式连接环境做了优化，支持 FastCGI, CGI, Auth, 输出压缩(output compress), URL重写, Alias 等重要功能。
-
-使用与配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
-
 # command-not-found
 
-在你试图执行一个不存在的命令时，提醒你如何安装此应用。
+在你试图执行一个不存在的命令时，提醒你如何安装此命令对应的应用。
 
 # GNUscreen&tmux
 
@@ -815,6 +822,32 @@ pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项�
 目前已经有人实现了基于短信的交互式shell，异常强大！
 
 注:用了修改版Termux就用不了这个扩展包了，因为Apk签名不统一。
+
+[+]Web环境搭建
+
+ * lighttpd
+
+Lighttpd是一个新兴的、轻量级的 web 服务器，它开始越来越多的应用在一些重要场合，如：YouTobe、Sourceforge、豆瓣……
+
+Lighttpd 以安全、快速和内存消耗低著称，还专门为大型分布式连接环境做了优化，支持 FastCGI, CGI, Auth, 输出压缩(output compress), URL重写, Alias 等重要功能。
+
+使用与配置：https://i.linuxtoy.org/docs/guide/ch23s03.html
+
+# nginx
+ 
+高性能http服务器。 
+
+注：默认的普通权限无法启动 nginx。
+
+运行：
+
+```shell
+apt install proot nginx -y
+termux-chroot
+nginx
+```
+默认端口8080。
+
 
 [附录]Neoterm
 
