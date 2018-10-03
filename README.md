@@ -1136,6 +1136,9 @@ mimetype.assign         = (
 ```   	                     
 但这只能用于建设静态网站。
 
+[+]Hacking
+
+https://www.anquanke.com/opensource?page=1&c=1
 
 [附录]Neoterm
 
