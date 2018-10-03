@@ -876,7 +876,7 @@ tor网络客户端。
  
 注：全部操作只适用于termux。
 
-只对nginx开启的http服务进行了映射，需要映射其他服务请自行更改配置。
+只对lighttpd开启的http服务进行了映射，需要映射其他服务请自行更改配置。
 
 ```shell
 nano $PREFIX/etc/tor/torrc
@@ -904,7 +904,7 @@ cat ~/tor/hiddenservice/hostname
 
 注：httpd暂时无法使用。[Wed Oct  3 15:36:03 CST 2018]
 
-#coreutil
+# coreutil
 
 同busybox。
 
