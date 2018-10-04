@@ -245,7 +245,7 @@ pwd
 
  * 用函数控制重复性工作
  
- * shell变量与函数变量
+ * shell变量与环境变量
  
  * 用管道传输数据。
  
@@ -1025,6 +1025,20 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 Termux日常使用帮助。
 
 >注:尽管Termux官方尽可能的为Termux营造linux的使用感受，但仍与linux有很大不同。此帮助手册包含大量linux发行版不支持的Termux特殊性质与配置。
+
+[+]Termux原生图形界面
+
+见x11源，xorg还有openbox啥的。
+
+有文一篇https://yadominjinta.github.io/2018/07/30/GUI-on-termux.html
+
+有项目一个:https://github.com/Hax4us/guitmux
+
+Onelineinstall:
+```shell
+apt update&&apt install x11-repo&&apt update&&apt install aterm tigervnc -y&&echo "export DISPLAY=:1" >> ~/.bashrc
+```
+不接受任何建议，就是不用WM，bash永远是我的默认shell。
  
 [+]justforfun
 
@@ -1161,19 +1175,8 @@ https://www.anquanke.com/opensource?page=1&c=1
 
 [附录]Neoterm
 
-Termux分支，特点是兼容Google中文输入法，自带oh-my-zsh安装脚本，Adb与Fastboot,以及强到爆炸的……
+Termux分支，特点是兼容Google中文输入法，自带oh-my-zsh安装脚本，Adb与Fastboot。
 
-Xorg及图形环境。
-
-目前测试版已经有图形会话选项了，但尚不稳定。
-
-[附录]Termux原生图形界面
-
-见extra源，xorg还有openbox啥的。
-
-有文一篇https://yadominjinta.github.io/2018/07/30/GUI-on-termux.html
-
-有项目一个:https://github.com/Hax4us/guitmux
 
 
 写在最后：
