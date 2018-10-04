@@ -16,7 +16,7 @@ unset LD_PRELOAD
 
 2.[-r]
 
-指定proot虚拟机的根目录，参数为目录名。
+指定proot容器的根目录，参数为目录名。
 
 例子:我使用Alpine这个轻量级发行版，根目录为
 
@@ -32,7 +32,7 @@ unset LD_PRELOAD
 
 3.[-b]
 
-将真实系统中的目录映射到虚拟机中。
+将真实系统中的目录映射到容器中。
 
 ```shell
 #将Android内核产生的数个特殊目录映射到虚拟机中
@@ -40,7 +40,7 @@ unset LD_PRELOAD
 #另一种方法
 -b /dev:/dev
 ```
-其余目录可自行选择，常有人将Termux的Home目录映射到虚拟机中，以便于在Termux与虚拟机间共享dot文件。
+其余目录可自行选择，常有人将Termux的Home目录映射到容器中，以便于在Termux与虚拟机间共享dot文件。
 
 4.[--link2symlink]
 
@@ -52,6 +52,8 @@ unset LD_PRELOAD
 
 编译必备。
 
+注:然而termux访问不了的系统资源在proot容器中一样访问不了。
+
 6.[-w]
 
 设定初始工作目录。
@@ -62,7 +64,7 @@ unset LD_PRELOAD
 
 8.[-i]
 
-用`-i uid:gid`来指定自己启动proot时的登录用户。
+用`-i uid:gid`来指定自己启动一个proot容器时的登录用户。
 
 [$]启动shell
 
