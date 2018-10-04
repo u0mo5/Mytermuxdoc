@@ -176,7 +176,9 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 # [附录]:More about shell
 
->如果不会用shell，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
+>这里的shell既指linux shell应用，也指命令行。
+
+>如果不会用命令行，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
 
 >顺便骂一句，**AT&T！
 
@@ -292,16 +294,22 @@ ok=false
 #定义一个名为ok的变量，值为false。
 echo $ok
 #将变量ok的值输出
+#使用$<name>来使用一个变量的值。
 export ok=false
 #使用export这个shell内置命令设置环境变量。
 #因为没有进程会去关心/访问ok这样一个环境变量
 #所以无法演示
+unset ok
+#将变量ok"取消"掉，使其值为null
 export PATH=/sbin
 #这个命令效果倒是立竿见影
 #不要慌，长按屏幕，点击More，再选择kill process即可
 #回到Termux，终端恢复正常
 ```
- 
+
+上面这一堆操作是针对bash的，其他shell可能会有所不同。但概念是相同的。
+
+
  * 用管道传输数据。
  
  * shell script
