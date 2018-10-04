@@ -35,7 +35,7 @@ unset LD_PRELOAD
 将真实系统中的目录映射到容器中。
 
 ```shell
-#将Android内核产生的数个特殊目录映射到虚拟机中
+#将Android内核产生的数个特殊目录映射到容器中
 -b /dev/ -b /sys/ -b /proc/
 #另一种方法
 -b /dev:/dev
