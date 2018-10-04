@@ -941,6 +941,12 @@ ln -s busybox ls
 
 想必bash在重启之后才刷新PATH内可执行文件的索引信息吧。
 
+注:来自xeffyr的回复
+
+Just a behaviour of bash - binary path caching. Run `hash -r` to fix.
+
+果然是bash的锅。
+
 # game
  
 gnuchess,gnugo啥的。
