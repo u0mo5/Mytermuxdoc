@@ -188,7 +188,7 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/index.php/Zsh_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
-因为termux无需设定PATH一类的环境变量，所以我们只需要自己写PS1就行了！
+因为termux无需设定PATH一类的环境变量，所以我们只需要自己写$PS1和就行了！
 
  * Xonsh
  
@@ -403,6 +403,8 @@ bash可以把文件作为参数，这说明了什么？
 是的，命令行也可以作为一种编程语言(但它对数学的支持奇烂，zsh好一点)。
 
 几乎所有人都用bash作为script解释器，当然oh-my-zsh/和fisherman的开发者肯定不是这种人。
+
+zsh基本兼容bash语法，还有很多独有的特性，想学zsh编程请看：https://github.com/goreliu/zshguide
 
 
 # 2.选择文本编辑器
