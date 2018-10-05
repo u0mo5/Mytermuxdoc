@@ -693,7 +693,7 @@ termux的ssh配置异常简单，无需任何更改。
 
 proot是`chroot`及`mount --bind`的用户空间实现，一个简单的容器应用。
 
-termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构，外加模拟root权限。
+termux的proot包内还包含了一个名为`termux-chroot`的bashscript，可在Termux内模拟linux目录结构，外加模拟uid为0。
 
 proot使用帮助：https://github.com/myfreess/Mytermuxdoc/blob/master/HowToUseProot.md
 
