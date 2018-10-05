@@ -247,7 +247,7 @@ pwd
 
  * 用函数控制重复性工作
  
-函数是shell的一种特性。用户可以将一个命令序列(不逐行读取)定义为一个函数，节省打字量。
+函数是shell的一种特性。用户可以将一个命令序列定义为一个函数，节省打字量。
 
 让我们简单操作一下。
 
@@ -259,7 +259,7 @@ function delete()
 if [ -d $@ ]; then
     rm -rf "$@"
 else
-   echo "这不是一个目录。"
+    echo "这不是一个目录。"
 fi
 }
 #函数内容结束
@@ -275,9 +275,35 @@ delete empty
 ```
 这比数学上的函数可简单多了！而且其意义也完全不同。
 
- * shell变量与环境变量
+注：关于if then else语句和$@，下面会有说明。
+
+附：我的自动化github同步函数
+
+```shell
+autopush()
+{
+case $@ in
+	$empty)
+		something=nothing
+		;;
+	 *)
+		 something=$@
+		 ;;
+esac		 
+git add *
+#我只写文档才这样干，有志于编程的各位不要学我。
+git commit -m "$something"
+git push origin master
+}
+```
+
+Linux用户的行为是非常矛盾的，一方面写配置文件时他们非常勤快，另一方面在使用交互式shell时连字都懒得多写几个……
+
+注：上面的函数结构适用于bash，不一定适用于其他shell……
+
+ * shell变量与环境变量		
  
-变量这个概念很类似于C语言中的变量，让我们来打个比方:
+shell变量这个概念很类似于C语言中的变量，让我们来打个比方:
 
 变量→纸箱子。
 
@@ -309,10 +335,64 @@ export PATH=/sbin
 
 上面这一堆操作是针对bash的，其他shell可能会有所不同。但概念是相同的。
 
+一些对Termux很重要的环境变量：
 
- * 用管道传输数据。
+```shell
+echo $PATH
+---snip---
+/data/data/com.termux/files/usr/bin:/data/data/com.termux/files/usr/bin/applets
+#PATH变量的值是一些以冒号分隔的目录，当你执行命令时，shell会去这些目录中寻找对应的linux应用。
+#排在前面的目录shell会优先查询
+#对PATH内文件的改变shell不会实时查询，shell有一套"缓存"机制
+#大多数时候"缓存"机制会加快命令执行速度，少数时候会带来一些问题(例如coreutil,下文可见)
+#未完结
+```
+shell变量只能应用于当前shell及其子shell。
+
+ * 用管道传输数据
  
- * shell script
+管道是shell的一种特性，它经常用于交互式shell中。
+
+管道可以将一个命令的"结果"传递给另一个命令，那么什么是结果？
+
+答案是：标准输出和文件(可能还可以有别的信息被传递，但我只会这两种)
+
+演示：
+
+```shell
+apt list | less
+#以一种较平和的方式显示你可以安装的应用
+ps | grep $(whoami)
+#查看termux内运行的所有linux应用与termux主进程
+curl http://distfiles.gentoo.org/releases/arm/autobuilds/20161129/stage3-armv7a-20161129.tar.bz2 | tar xj
+#下载一个gentoo的stage包，并直接传输给tar解压
+#下载结束时已经解压完毕，节约时间。
+```
+
+前两个例子是标准输出的进程间传输，后一个例子则是文件的进程间传输。
+
+值得注意的是，文件的进程间传输并不是将文件名称作为参数，而是直接传输文件内容，因此tar的-f参数被去除了，curl的-O参数也被去除了。
+
+这只是最简单的操作，复杂的我玩不来。
+
+
+ * 布尔运算：与或非的选择
+ 
+ * $()：将命令的输出作为变量
+ 
+ * ${}：展开变量
+ 
+ * 输出重定向
+ 
+ * <：以文件作为输入
+ 
+ * <$()将命令的输出作为文件
+ 
+ * shell编程
+ 
+bash可以把文件作为参数，这说明了什么？
+ 
+是的，命令行也可以作为一种编程语言(但它对数学的支持奇烂，zsh好一点)。
 
 
 # 2.选择文本编辑器
@@ -617,17 +697,19 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 隔壁群管理的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
-# [附录]选择Linux发行版
+# [附录]选择Linux的n个理由
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux.jpg)
-ubuntu桌面很好，Fedora追求新潮技术，Arch更新极快，alpine极致轻量，debian老牌稳定。那么选什么好?
+Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom……
 
-Arch,别名洗发水，在各大论坛总有人推荐的坑人玩意。更新奇快，快到爆炸(连Arch官方都承认Arch极易崩溃)。
+都很正常，冷静，被坑得多了也就习惯了。
 
-Ubuntu,别名内部错误，好了不多喷，装Xfce不用GNOME就是了。
+但是人不能被动挨打，所以我们要宣扬主动挨打！
 
-Debian，别名**，老牌稳定，配置简单，桌面也还不错。
+多编译，多帮社区打包(AUR)，学习编程，只用自己配置的WM……
 
-Fedora，别名地沟油，因为疯狂追求新技术导致常年新版跳票/不稳定。
+在感受到打包维护的辛苦之后，在感受到定制应用的成就感之后，你就会感叹:
+
+这帮货写的pkgbuild和Makefile都是什么玩意！
 
 
 # [附录]桌面环境
@@ -987,14 +1069,9 @@ cat ~/tor/hiddenservice/hostname
 
  * 风险
  
-如果卸载会导致ls命令丢失。
+如果卸载会导致ls等命令丢失。
 
-解决方案：
-```shell
-cd $PREFIX/bin
-ln -s busybox ls
-```
-重启一次Termux也可以。
+解决方案：重启一次Termux
 
 原因:PATH优先级导致的问题。
 
@@ -1002,7 +1079,7 @@ ln -s busybox ls
 
 重启之后又正常了……
 
-想必bash在重启之后才刷新PATH内可执行文件的索引信息吧。
+想必bash在重启之后才刷新了PATH内可执行文件的索引信息吧。
 
 注:来自xeffyr的回复
 
