@@ -711,6 +711,7 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 # [附录]选择Linux的n个理由
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux.jpg)
+![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux2.jpg)
 Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom……
 
 都很正常，冷静，被坑得多了也就习惯了。
