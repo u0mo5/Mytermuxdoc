@@ -245,6 +245,8 @@ pwd
 ```
 将长，复杂，需要重复使用的命令用alias制定一个短别名，保存在bashrc中，可有效减少打字量。
 
+风险:命令参数有时也会被别名替换。
+
  * 用函数控制重复性工作
  
 函数是shell的一种特性。用户可以将一个命令序列定义为一个函数，节省打字量。
@@ -347,7 +349,13 @@ echo $PATH
 #大多数时候"缓存"机制会加快命令执行速度，少数时候会带来一些问题(例如coreutil,下文可见)
 #未完结
 ```
-shell变量只能应用于当前shell及其子shell。
+使用printenv可以查看所有的环境变量。
+
+在Linux发行版上，系统所需环境变量的定义依赖于/etc/profile这个初次启动shell时运行的shellscript，那如果它不存在呢?
+
+那你除了shell内置命令什么应用也用不了了2333(这很Linux风格)，不过并非什么大事。
+
+在Termux上就不一样了，环境变量的定义不依赖于profile(profile的内容会被shell读取并执行，但经我查看，Termux的profile并没有定义任何一个环境变量……)，而由Termux主应用定义(如果你在bashrc里啥也没写，Termux照样运行得好好的。)
 
  * 用管道传输数据
  
@@ -386,13 +394,15 @@ curl http://distfiles.gentoo.org/releases/arm/autobuilds/20161129/stage3-armv7a-
  
  * <：以文件作为输入
  
- * <$()将命令的输出作为文件
+ * <()将命令的输出作为文件
  
  * shell编程
  
 bash可以把文件作为参数，这说明了什么？
  
 是的，命令行也可以作为一种编程语言(但它对数学的支持奇烂，zsh好一点)。
+
+几乎所有人都用bash作为script解释器，当然oh-my-zsh/和fisherman的开发者肯定不是这种人。
 
 
 # 2.选择文本编辑器
@@ -546,7 +556,7 @@ termux-exec：下面介绍
 
 # 4.软件包管理
 
-termux的包管理工具是apt，基于apt封装了一个pkg命令
+termux的包管理工具是apt，基于apt封装了一个pkg命令(pkg是个bashscript)
 
 `apt install $package` 或 `pkg install $package` 一样可以安装软件。
 
@@ -1254,7 +1264,8 @@ ln -s $PREFIX/bin/nano termux-file-editor
 
 ```shell
 cd $dir
-python -m SimpleHTTPServer
+python2 -m SimpleHTTPServer 8000 #python2
+python -m http.server 8000 #python3
 ```
 python将监听8000端口，并开启一个简单的http服务器，根目录为$dir，这相当方便易用，风险也小(拒绝使用登录式ftp)
 
