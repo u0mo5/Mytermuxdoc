@@ -53,7 +53,7 @@ bash不会很漂亮，但补全还是有的。
 apt install bash-completion
 echo "source $PREFIX/share/bash-completion/bash_completion" >> ~/.bashrc
 ```
-然后输入命令时按Tab键，就可以补全参数了。顺带一说，直接在bash会话中按Tab可以补全目录和文件名。
+然后输入命令时按Tab键，就可以补全参数了。顺带一说，直接在bash会话中按Tab也可以补全目录和文件名。
 
 # zsh
 ![zsh](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/zsh.jpg)
@@ -114,6 +114,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 ```
 
+ * zsh-completion
+ 
+不用多说吧?
+```shell
+git clone git://github.com/zsh-users/zsh-completions.git ~/.zsh-completions
+echo "fpath=(~/.zsh-completions/src $fpath)" >> ~/.zshrc
+echo "rm -f ~/.zcompdump 2> /dev/null; compinit" >> ~/.zshrc
+```
 # fish
  
 安装:`apt install fish`
@@ -181,6 +189,12 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 >如果不会用命令行，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
 
 >顺便骂一句，**AT&T！
+
+ * Linuxshell基本工作原理：exec()和fork()
+
+ * 在zsh中使用Tab键
+ 
+你就，一直按，光标移到你想打开/进入的文件/目录，就可以停手了。 
 
  * 手写zshrc
 
@@ -385,10 +399,38 @@ curl http://distfiles.gentoo.org/releases/arm/autobuilds/20161129/stage3-armv7a-
 
 
  * 布尔运算：与或非的选择
+
+Linux程序运行结束时会给其父进程(这词真怪)发送一个退出码，一般是0，出错时返回其他数字(也有例外，像diff)。使用echo $?可以查看上一次运行的命令的退出码。
+
+这是布尔运算(就是逻辑判断)的基础。让我们操作一把。
+
+```shell
+mkdir ~/.zsh&&rmdir~/.zsh
+#创建一个目录,如果创建成功再把它删掉
+#如果~/.zsh这个目录早就在那儿了，mkdir会报错
+#~/.zsh目录就不会被删除
+#&&：如果前一条命令退出码为0，就执行后一条命令
+#||与&&相反，如果前一条命令退出码不为0，才会执行后一条命令
+mkdir ~/.zsh||echo "~/.zsh目录已存在"
+#假如在使用||运算符时，程序返回的退出码为0？
+#则后一条命令不执行。&&同理，反着想就行
+mkdir ~/.zsh&&echo "~/.zsh目录创建成功"||echo "~/.zsh目录已存在
+#想想这条命令几个意思？
+```
+
+
+
  
  * $()：将命令的输出作为变量
- 
+
+```shell 
+echo $(echo "Hello World")
+#这个太无聊，再看看别的吧
+
+``` 
  * ${}：展开变量
+ 
+echo ${HOME}试试? 
  
  * 输出重定向
  
