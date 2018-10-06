@@ -14,6 +14,16 @@ Archwiki：https://wiki.archlinux.org
 
 Linux基础工具使用指南：https://i.linuxtoy.org/docs/guide/ch17.html
 
+选看：
+
+bilibili上的高质量Linux学习视频up主：http://space.bilibili.com/7125370?share_medium=android&share_source=copy_link&bbid=AmFQNFUzVmBUY1czT31PfU8tGCwef0cmF2sOinfoc&ts=1538784100488
+
+然而他用Mac。
+
+Linux挖坑不埋指南：https://segmentfault.com/a/1190000003813761
+
+不要相信他说的话！不要！Gentoo是世界上最可怕的操作系统之一，它甚至都不是Linux(LFS至少是纯正Linux)！
+
 [+]初始化
 
 # 1.选择shell
@@ -186,7 +196,7 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 >这里的shell既指linux shell应用，也指命令行。
 
->如果不会用命令行，那不是你的错。linux独有的精神是自由，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
+>如果不会用命令行，那不是你的错。GNU/linux独有的精神是自由/justforfun，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
 
 >顺便骂一句，**AT&T！
 
@@ -466,6 +476,8 @@ Termux官方列出了所有Termux上可用的文本编辑器，详情见wiki。
 Emacs在设计之初的目标就是：提供一个完整的系统工具集所应有的功能(从浏览器到游戏)，又因为Emacs Lisp的出现，它可以让用户简单地对它进行扩展。
 
 例如Emacs其实可以煮咖啡(coffee.el)，不是玩笑话，详情可搜索词条"Emacs煮咖啡"。
+
+Emacs不全面介绍，面向一切不懂计算机的人：https://segmentfault.com/a/1190000012267697
 
  * 退出Vim
 
