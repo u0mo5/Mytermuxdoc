@@ -1379,6 +1379,25 @@ mimetype.assign         = (
 ```   	                     
 但这只能用于建设静态网站。
 
+ * php
+ 
+ * Mariadb
+ 
+安装/Install：
+```shell
+apt install mariadb -y
+mkdir $PREFIX/etc/my.cnf.d
+mysql_install_db
+```
+启动/start：
+```shell
+mysqld
+mysql
+#进入交互界面，exit退出
+```
+
+
+
 [+]Hacking
 
 https://www.anquanke.com/opensource?page=1&c=1
