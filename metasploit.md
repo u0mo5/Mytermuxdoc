@@ -1,3 +1,5 @@
+![banner](https://github.com/myfreess/Mytermuxdoc/blob/master/pic/msfbanner.jpg)
+
 metasploit.md
 
 [+]安装metasploit
@@ -8,17 +10,9 @@ Termux上安装metasploit有三种方式：从源安装/脚本安装/手动安�
 
 以下为metasploit在Termux上的手动安装指南。
 
-1.降级ruby
+1.组织意念，冷静思考
 
-```shell
-apt remove ruby ruby-dev
-apt install gnupg-curl dirmngr
-apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
-echo 'deb https://termux.xeffyr.ml/ stable main' >> $PREFIX/etc/apt/sources.list
-apt update
-apt install ruby=2.4.5 ruby-dev=2.4.5
-```
-这一步并非必需。
+你连使用都不会，装Metasploit干吗？
 
 2.下载源码、软件包以及bundler。
 

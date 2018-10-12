@@ -1,6 +1,6 @@
 ![termux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/termux.png)
 
-Termux不完全指南
+# Termux不完全指南
 
 必读：
 
@@ -483,17 +483,16 @@ Emacs不全面介绍，面向一切不懂计算机的人：https://segmentfault.
 
 按下'ESC'键，进入命令模式，输入':wq'将保存文件并退出Vim。 
 
-#  * vim中文支持
+# vim中文支持
  
 ```shell
 mkdir ~/.vim
 cd ~/.vim
-touch vimrc
-#以下为vimrc内容
+vimrc <<EOM
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
 set fencs=utf8,gbk,gb2312,gb18030
-#保存文件
+EOM
 #在shell的init文件中加一行
 source ~/.vim/vimrc
 #结束
@@ -800,6 +799,15 @@ tsu
 #单次使用root权限
 tsudo command
 ```
+[附录]文件权限搞砸了怎么修
+
+```shell
+user=$(whoami)
+tsu
+cd ~
+cd ..
+chmod -hR $user *
+```
 
 # Git
 ![git](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/git.gif)
@@ -834,6 +842,8 @@ cat $HOME/.ssh/id_rsa.pub
  * github
 ![github](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/github.jpg)
 又称gayhub，干啥的我不用说了吧？
+
+ * 用github pages建博客
 
 # Python/Python2
  
@@ -1128,6 +1138,8 @@ cat ~/tor/hiddenservice/hostname
  
 实用linux小工具集合，默认已安装。
 
+termux的busybox是定制版，移除用户管理等termux用不到的命令。
+
 注：httpd暂时无法使用。[Wed Oct  3 15:36:03 CST 2018]
 
 # coreutil
@@ -1136,7 +1148,7 @@ cat ~/tor/hiddenservice/hostname
 
  * 风险
  
-如果卸载会导致ls等命令丢失。
+如果卸载会导致ls等命令一暂时丢失。
 
 解决方案：重启一次Termux
 
