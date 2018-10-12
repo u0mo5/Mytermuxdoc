@@ -123,15 +123,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 #启动时运行
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 ```
-
- * zsh-completion
- 
-不用多说吧?
-```shell
-git clone git://github.com/zsh-users/zsh-completions.git ~/.zsh-completions
-echo "fpath=(~/.zsh-completions/src $fpath)" >> ~/.zshrc
-echo "rm -f ~/.zcompdump 2> /dev/null; compinit" >> ~/.zshrc
-```
 # fish
  
 安装:`apt install fish`
