@@ -1,4 +1,4 @@
-![banner](https://github.com/myfreess/Mytermuxdoc/blob/master/pic/msfbanner.jpg)
+![banner](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/msfbanner.jpg)
 
 metasploit.md
 
