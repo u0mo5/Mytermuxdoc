@@ -240,8 +240,6 @@ fork()可以复制出两个相同的，运行在运存中的程序。exec()则�
 
 Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/index.php/Zsh_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
-因为termux无需设定PATH一类的环境变量，所以我们只需要自己写$PS1和就行了！
-
  * Xonsh
  
 Xonsh是个用python写的shell，兼容bash。 奇特之处在于它同时支持bash&python语法，甚至可以混合使用！
