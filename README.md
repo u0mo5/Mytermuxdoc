@@ -200,7 +200,35 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 >顺便骂一句，**AT&T！
 
+ * 标准输入输出
+ 
+你打的字(不管用什么设备)→标准输入
+
+一个应用正常运行时屏幕上显示的文本→标准输出
+
+应用报错→标准错误输出
+ 
+ * 字面量与shell的字符替换
+ 
+你输的命令shell会先对其中可以用现有规则处理的文本进行处理，然后再决定下一步干什么。
+
+echo $1试试，你会发觉其奇特之处的。
+
+然后执行echo '$1'，查看它们的不同之处。
+ 
+ * 命令编辑
+ 
+按左右箭头特殊键就行，打错字了可以改。
+ 
+ * 历史命令
+ 
+按上下箭头，可以看自己以前用过什么命令。 
+
  * Linuxshell基本工作原理：exec()和fork()
+ 
+Linux内核提供一种叫系统调用(system call)的玩意，帮助其它程序处理问题。
+
+fork()可以复制出两个相同的，运行在运存中的程序。exec()则可以将请求此调用的程序替换成另一个程序(自己换成自己也不是不行)。
 
  * 在zsh中使用Tab键
  
@@ -218,6 +246,8 @@ Archwiki给出了详细的方案，可见此处：https://wiki.archlinux.org/ind
  
 Xonsh是个用python写的shell，兼容bash。 奇特之处在于它同时支持bash&python语法，甚至可以混合使用！
 
+ * fzf
+ 
  * 隐藏在zsh中的神秘力量
  
 数学支持： 
@@ -381,6 +411,29 @@ echo $PATH
 
 在Termux上就不一样了，环境变量的定义不依赖于profile(profile的内容会被shell读取并作为命令执行，但经我查看，Termux的profile并没有定义任何一个环境变量……)，而由Termux主应用定义(如果你在bashrc里啥也没写，Termux照样运行得好好的。)
 
+ * 运行一个不在PATH内的可执行文件
+ 
+在文件名前加点和斜杠即可。
+
+例如，在home目录有个名为baidupcs-go的可执行文件，那么我应该怎样执行它?
+
+1.进入home目录
+
+```shell
+cd ~
+#我没写错
+```
+2.执行
+
+```shell
+chmod 755 baidupcs-go
+./baidupcs-go
+```
+异常简单。 
+ 
+ * type -a
+
+
  * 用管道传输数据
  
 管道是shell的一种特性，它经常用于交互式shell中。
@@ -443,14 +496,22 @@ echo $(echo "Hello World")
 echo ${HOME}试试? 
  
  * 输出重定向
+```shell 
+>
+>>
+2>
+2>>
+``` 
  
  * <：以文件作为输入
  
- * <()将命令的输出作为文件
+极少用到。 
+ 
+ * <()将命令的输出作为文件 
  
  * shell编程
  
-bash可以把文件作为参数，这说明了什么？
+bash可以把文件名作为命令参数，这说明了什么？
  
 是的，命令行也可以作为一种编程语言(但它对数学的支持奇烂，zsh好一点)。
 
@@ -611,7 +672,7 @@ termux-exec：下面介绍
 
 # 4.软件包管理
 
-termux的包管理工具是apt，基于apt封装了一个pkg命令(pkg是个bashscript)
+Termux的包管理工具是apt，基于apt封装了一个pkg命令(pkg是个bashscript)
 
 `apt install $package` 或 `pkg install $package` 一样可以安装软件。
 
@@ -762,9 +823,13 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 隔壁群管理的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
-# [附录]选择Linux的n个理由
+# [附录]不选择Linux的n个理由
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux.jpg)
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux2.jpg)
+为什么要用Linux啊?
+
+因为Linux应用生态好啊。
+
 Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom……
 
 都很正常，冷静，被坑得多了也就习惯了。
@@ -777,14 +842,17 @@ Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom…�
 
 这帮货写的pkgbuild和Makefile都是什么玩意！
 
-
 # [附录]桌面环境
 
 经常看到别人乐滋滋晒lxde？其实，像openbox这种WM才是手机最好的选择。
 
 关于桌面怎么装，当然Archwiki最有发言权。先装Xorg，其他自由发挥。
 
-真的懒，可以看这里：https://i.linuxtoy.org/docs/guide/ch19.html
+也可以看这里：https://i.linuxtoy.org/docs/guide/ch19.html
+
+# [附录]华圾(华为手机)上的proot I/O error
+
+解决方案见此处：https://github.com/termux/proot/issues/15
 
 # tsu
  
@@ -1214,6 +1282,10 @@ apt search game可以找到更多游戏！
 
 主页:https://github.com/jarun/nnn
 
+# attr
+
+# htop
+
 # [附录]编译C源码文件
 
 README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能把软件装好！
@@ -1241,6 +1313,13 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 注：现代的gcc支持多种语言的编译，而现代的make甚至可以自动化完成Docker容器的创建(这个说法可能不对)和运行。
 
 
+# Termux_Extra_tools
+
+此文档中是对Termux用户们有用，但不包含在官方仓库中的工具
+
+
+
+
 # TERMUX_COMMON
 
 Termux日常使用帮助。
@@ -1254,12 +1333,6 @@ Termux日常使用帮助。
 有文一篇https://yadominjinta.github.io/2018/07/30/GUI-on-termux.html
 
 有项目一个:https://github.com/Hax4us/guitmux
-
-Onelineinstall:
-```shell
-apt update&&apt install x11-repo&&apt update&&apt install aterm tigervnc -y&&echo "export DISPLAY=:1" >> ~/.bashrc
-```
-不接受任何建议，就是不用WM，bash永远是我的默认shell。
  
 [+]justforfun
 
@@ -1303,6 +1376,8 @@ termux-chroot
 
 配色方案如法炮制，复制后重命名为colors.properties。
 
+更好的建议：去google play购买style插件，操作更方便！
+
 [+]More
 
 Termux中长按屏幕，点按'More'出现更多选项。
@@ -1338,7 +1413,7 @@ python -m http.server 8000 #python3
 ```
 python将监听8000端口，并开启一个简单的http服务器，根目录为$dir，这相当方便易用，风险也小(拒绝使用登录式ftp)
 
-当然了，如果你要的只是快，这样的确很好。但这样不方便整个目录的复制，如果你经常传输文件，可以考虑一下pure-ftpd
+当然了，如果你要的只是快，这样的确很好。但这样不方便整个目录的复制，python的httpserver也不太稳定。如果你经常传输文件，可以考虑一下pure-ftpd
 
 pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项。
 
@@ -1408,11 +1483,45 @@ mysql
 #进入交互界面，exit退出
 ```
 
+ * memcached
+
 
 
 [+]Hacking
 
 https://www.anquanke.com/opensource?page=1&c=1
+
+[附录]无名师与脚本狂
+
+无名师和学生吃早饭时，从黑客大陆来了个陌生访客。
+
+“Ihear y00 are very l33t,”他说。“Pl33z teach m3 all y00 know”。（我听说你很牛，请把你会的都教给我。）
+
+无名师的学生面面相觑，都没听懂这类粗鄙言语。无名师微笑道：“你想弄懂Unix？”
+
+“I want to b3 a wizard hax0r”，陌生人回答，“and 0wn ever3one's b0xen。”（我想当个顶尖黑客，能掌握所有人的机器。）
+
+“我不教这个”，无名师答道。
+
+陌生人很激动。“D00d， y00 r nothing but a p0ser。”，他说。“If y00 n00 anything, y00 wud t33ch m3。”（哥们儿，敢情你没真本事啊，你要知道点儿东西就教给我了。）
+
+“有条路，”无名师说，“可以将你带入真知。”他在纸上写了个IP地址。“黑掉这台机器，这对你来说应该不费什么力气，它的管理员不称职。回来后告诉我你发现了什么。“
+
+陌生人鞠了一躬就离开了。无名师把他的早饭吃完。
+
+几天过去了，几个月过去了。没人再想起陌生人。
+
+数年过去了，黑客大陆来的陌生人回来了。
+
+”你混蛋！“他说，”我黑掉了那台机器，你说的没错，太容易了。但是我被FBI抓起来扔进监狱了。“
+
+”好“，无名师说，”你可以继续下一课了。“他在另一张纸上写了个IP地址交给陌生人。
+
+”你疯了？“陌生人喊道。”经过这事，我再也不黑别人的机器了。”
+
+无名师脸现微笑。“这里就是”，他说，“真知的开始。”
+
+听到此，陌生人眼中一亮。
 
 [附录]Neoterm
 
