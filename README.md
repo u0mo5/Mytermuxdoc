@@ -488,11 +488,11 @@ Emacs不全面介绍，面向一切不懂计算机的人：https://segmentfault.
 ```shell
 mkdir ~/.vim
 cd ~/.vim
-vimrc <<EOM
+cat > vimrc <<EOF
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
 set fencs=utf8,gbk,gb2312,gb18030
-EOM
+EOF
 #在shell的init文件中加一行
 source ~/.vim/vimrc
 #结束
