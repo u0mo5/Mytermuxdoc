@@ -1233,6 +1233,54 @@ Just a behaviour of bash - binary path caching. Run `hash -r` to fix.
 
 果然是bash的锅。
 
+ * micro
+
+Micro：轻量的质感风格命令行文本编辑器
+
+优秀特性:
+
+ * 极其易用
+ 
+ * 跨平台支持(使用Go编写)
+ 
+ * 中文支持极佳
+ 
+快捷键：
+
+Ctrl-q: 退出
+
+Ctrl-s: 保存
+
+Ctrl-o: 打开文件
+
+Ctrl-z: 撤销
+
+Ctrl-y: 重做
+
+Ctrl-f: 查找
+
+Ctrl-n: 查找下一个
+
+Ctrl-p: 查找上一个
+
+Ctrl-a: 全选
+
+Ctrl-c: 复制
+
+Ctrl-x: 剪切
+
+Ctrl-v: 粘贴
+
+Ctrl-u: 向上滚动半页
+
+Ctrl-d: 向下滚动半页
+
+PageUp: 向上
+
+PageDown: 向下
+
+Ctrl-e: 执行一个命令 
+
  * game
  
 gnuchess,gnugo啥的。
