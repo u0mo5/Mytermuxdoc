@@ -733,11 +733,11 @@ http://www.sqlsec.com/2018/05/termux.html
 
 # TERMUX_PACKAGE
 
-termux可安装的linux应用介绍。
+termux官方源可安装的linux应用介绍。
 
 注：官方最近更新很快，如果文章有bug请向我提交issues。
 
-# lftp
+ * lftp
  
 轻量的cliftp客户端，交互式操作。
 
@@ -765,7 +765,7 @@ lftp >set ftp:charset gbk   #设置远程编码为gbk
 lftp >set file:charset utf8 #设置本地编码(Linux系统默认使用 UTF-8，这一步通常可以省略)  
 ```
 
-# openssh
+ *  openssh
  
 openssh是linux上最流行的ssh实现。 
  
@@ -818,7 +818,7 @@ Fedora,kali,Arch,debian，ubuntu，alpine……
 
 隔壁群管理的脚本:https://github.com/YadominJinta/atilo ，可以快速安装linux发行版。
 
-# [附录]不选择Linux的n个理由
+## [附录]不选择Linux的n个理由
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux.jpg)
 ![Linux](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/Linux2.jpg)
 为什么要用Linux啊?
@@ -839,7 +839,7 @@ Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom…�
 
 但是我不会这么干的，cpu烧不起。
 
-# [附录]桌面环境
+## [附录]桌面环境
 
 经常看到别人乐滋滋晒lxde？其实，像openbox这种WM才是手机最好的选择。
 
@@ -847,11 +847,11 @@ Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom…�
 
 也可以看这里：https://i.linuxtoy.org/docs/guide/ch19.html
 
-# [附录]华圾(华为手机)上的proot I/O error
+## [附录]华圾(华为手机)上的proot I/O error
 
 解决方案见此处：https://github.com/termux/proot/issues/15
 
-# tsu
+ * tsu
  
 tsu是Termux独有的su程序，允许用户以root权限运行Termux内的linux应用。
 
@@ -874,7 +874,7 @@ cd ..
 chmod -hR $user *
 ```
 
-# Git
+ * Git
 ![git](https://github.com/myfreess/Mytermuxdoc/blob/master/pictures/git.gif)
 git是一个分布式的版本控制系统。
 
@@ -912,7 +912,7 @@ cat $HOME/.ssh/id_rsa.pub
  
 Markdown使用说明：https://www.appinn.com/markdown/ 
 
-# Python/Python2
+ * Python/Python2
  
 python 是目前全世界最流行的编程语言，分为2和3两个版本(语法部分改变)
 
@@ -1034,7 +1034,7 @@ pip3 install scrapy
 
 注：its-pointless@github维护的社区源中有python模块scipy和numpy。
 
-# Nodejs
+ * Nodejs
  
 Nodejs是javascript语言的服务器端实现。
 
@@ -1042,7 +1042,7 @@ PackageManager/模块管理器:npm
 
 在repo中使用:npm install
 
- * npm安装任何包都报错？
+# npm安装任何包都报错？
  
 解决方案:https://github.com/rvagg/node-worker-farm/commit/0b2349c6c7ed5c51e234e418fad226875313e773
 
@@ -1052,7 +1052,7 @@ PackageManager/模块管理器:npm
 vim $PREFIX/lib/node_modules/npm/node_modules/worker-farm/lib/farm.js
 #将'maxConcurrentWorkers        : (require('os').cpus() || { length: 1 }).length'内的1改动一下，改成一个小于cpu核心数的数字。
 ```
-# ruby
+ * ruby
 
 ruby也是一门面向对象的编程语言，但比Python更适用于Web建站，也更重视语法规范。
  
@@ -1097,7 +1097,7 @@ termux-exec可以使termux适应Linux风格的shebang。
 
 注：google翻译是个好东西。
 
-# Golang
+ * Golang
 
 go是跨平台的编译型语言，golang则是一个go编译器的开源实现。
 
@@ -1134,7 +1134,7 @@ make install
 #必须有Makefile
 ```
 
-# curl & wget 
+ * curl & wget 
  
 普通的下载器(-_-)……
 
@@ -1150,7 +1150,7 @@ wget就略单薄一点，只有http和ftp(加上ssl)支持。
 
 例如在美剧Mr.Robot中，主角用wget拿了个服务器低权限shell，然后开始提权&搞破坏……
 
-# aria2
+ * aria2
  
 强悍的cli下载器，支持Metalink等现代下载技术。 
 
@@ -1165,11 +1165,11 @@ aria2c --enable-rpc --rpc-listen-all
 ```
 然后可以用transdroid方便地从127.0.0.1:6800连接了，下载奇快！
 
-# Weechat&irssi
+ * Weechat&irssi
  
 Irc聊天客户端。
  
-# Tor
+ * Tor
  
 Tor是一个开源的匿名上网项目，既可以避免服务器地址被用户得知，也可防止用户地址被查出。
 
@@ -1209,11 +1209,11 @@ termux的busybox是定制版，移除用户管理等termux用不到的命令。
 
 注：httpd暂时无法使用。[Wed Oct  3 15:36:03 CST 2018]
 
-# coreutil
+ * coreutil
 
 同busybox。
 
- * 风险
+ * 有意思的现象
  
 如果卸载会导致ls等命令一暂时丢失。
 
@@ -1233,7 +1233,7 @@ Just a behaviour of bash - binary path caching. Run `hash -r` to fix.
 
 果然是bash的锅。
 
-# game
+ * game
  
 gnuchess,gnugo啥的。
 
@@ -1241,11 +1241,11 @@ extra源有doxbox,stable源有fontz，玩些字符游戏没问题！
 
 apt search game可以找到更多游戏！
 
-# command-not-found
+ * command-not-found
 
 在你试图执行一个不存在的命令时，提醒你如何安装此命令对应的应用。
 
-# GNUscreen&tmux
+ * GNUscreen&tmux
 
 终端复用工具。
 
@@ -1257,13 +1257,13 @@ apt search game可以找到更多游戏！
 
 后缀名为db的数据库文件的编辑器。
 
-# rsync
+ * rsync
 
 专业级文件备份工具。
 
 特性:用它删除文件比rm快。
 
-# stunnel
+ * stunnel
 
 使用SSH封装非加密服务的工具。
 
@@ -1281,7 +1281,7 @@ apt search game可以找到更多游戏！
 
 主页:https://github.com/jarun/nnn
 
-# attr
+ * attr
 
  * htop
  
@@ -1570,7 +1570,7 @@ https://github.com/wizardforcel/kali-linux-cookbook-zh
 
 听到此，陌生人眼中一亮。
 
-[附录]Neoterm
+# [附录]Neoterm
 
 Termux分支，特点是兼容Google中文输入法，自带oh-my-zsh安装脚本，Adb与Fastboot。
 
