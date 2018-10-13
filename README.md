@@ -405,9 +405,7 @@ echo $PATH
 ```
 使用printenv可以查看所有的环境变量。
 
-在Linux发行版上，系统所需环境变量的定义依赖于/etc/profile这个初次启动shell时运行的shellscript，那如果它不存在呢?
-
-那你除了shell内置命令什么应用也用不了了2333(这很Linux风格)，不过并非什么大事。
+在Linux发行版上，系统所需环境变量的定义依赖于/etc/profile这个初次启动shell时运行的shellscript.
 
 在Termux上就不一样了，环境变量的定义不依赖于profile(profile的内容会被shell读取并作为命令执行，但经我查看，Termux的profile并没有定义任何一个环境变量……)，而由Termux主应用定义(如果你在bashrc里啥也没写，Termux照样运行得好好的。)
 
