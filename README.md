@@ -521,7 +521,7 @@ Linux上最流行的编辑器是Vim和Emacs，nano则适用于新手。
 
 但termux上的nano对中文的显示支持有问题，中文字符串会随机缩短。zile更水，居然不支持中文输入……
 
-没奈何，Vim与Emacs取其一。
+~没奈何，Vim与Emacs取其一。~(我用上micro了！居然会有这种质感风格的轻量cli编辑器！)
 
 Vim高效快速，Emacs功能强大且自带帮助手册，自行选择。Neovim作为vim的分支，也作为选择之一。
 
@@ -1354,6 +1354,8 @@ Termux安装脚本:bash <(curl https://raw.githubusercontent.com/myfreess/Myterm
 
 [Metasploit-framework]
 
+世界最强渗透测试引擎。
+
 在Termux上安装：https://github.com/myfreess/MSFinstall
 
 
@@ -1524,7 +1526,7 @@ mysql
 
 
 
-[+]Hacking
+[+]学会不hacking
 
 https://www.anquanke.com/opensource?page=1&c=1
 
@@ -1534,7 +1536,7 @@ https://github.com/Jack-Liang/kalitools
 
 https://github.com/wizardforcel/kali-linux-cookbook-zh
 
-让我~饶罗翔老师~来教你~截图~。自己看，自己学。
+让我~饶罗翔老师~来教你~截图~。自己看，自己学！
 
 [附录]无名师与脚本狂
 
