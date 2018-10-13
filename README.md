@@ -24,6 +24,14 @@ Linux挖坑不埋指南：https://segmentfault.com/a/1190000003813761
 
 不要相信他说的话！不要！Gentoo是世界上最可怕的操作系统之一，它甚至都不是Linux(LFS至少是纯正Linux)！
 
+Linux 内核详解:https://github.com/MintCN/linux-insides-zh
+
+工具性网站：
+
+Pypi:https://pypi.org/
+
+Explainshell，一个可以解释命令行含义的网站:https://explainshell.com
+
 [+]初始化
 
 # 1.选择shell
@@ -185,7 +193,7 @@ chsh不过一bashscript而己，它会从`$PREFIX/bin`中寻找用户需要的sh
 
 # [附录]:More about shell
 
->这里的shell既指linux shell应用，也指命令行。
+>这里的shell有时指linux shell应用，有时指命令行。
 
 >如果不会用命令行，那不是你的错。GNU/linux独有的精神是自由/justforfun，从unix那里继承的cli操作界面不见得就很好。如果一个人一味狂热地拥护所谓的"Unix哲学"却无视自由精神，那他肯定最终会滚入Mac的怀抱(除非没钱)。不过，既然来玩Termux了，该学还是要学一点的。
 
@@ -344,7 +352,7 @@ git push origin master
 
 Linux用户的行为是非常矛盾的，一方面写配置文件时他们非常勤快，另一方面在使用交互式shell时连字都懒得多写几个……
 
-注：上面的函数结构适用于bash，不一定适用于其他shell……
+注：上面的函数结构适用于bash，不一定适用于其他shell(例如fish)……
 
  * shell变量与环境变量		
  
@@ -469,10 +477,6 @@ mkdir ~/.zsh||echo "~/.zsh目录已存在"
 mkdir ~/.zsh&&echo "~/.zsh目录创建成功"||echo "~/.zsh目录已存在
 #想想这条命令几个意思？
 ```
-
-
-
- 
  * $()：将命令的输出作为变量
 
 ```shell 
@@ -507,6 +511,8 @@ bash可以把文件名作为命令参数，这说明了什么？
 几乎所有人都用bash作为script解释器，当然oh-my-zsh/和fisherman的开发者肯定不是这种人。
 
 zsh基本兼容bash语法，还有很多独有的特性，想学zsh编程请看：https://github.com/goreliu/zshguide
+
+ * here文档
 
 
 # 2.选择文本编辑器
@@ -829,7 +835,9 @@ Linux日常:bug糊脸，依赖大坑，编译报错，没声音，桌面boom…�
 
 在感受到打包维护的辛苦之后，在感受到定制应用的成就感之后，你就会感叹:
 
-这帮货写的pkgbuild和Makefile都是什么玩意！
+~这帮货写的pkgbuild和Makefile都是什么玩意！~ 打包者真不容易。
+
+但是我不会这么干的，cpu烧不起。
 
 # [附录]桌面环境
 
@@ -901,6 +909,8 @@ cat $HOME/.ssh/id_rsa.pub
 又称gayhub，干啥的我不用说了吧？
 
  * 用github pages建博客
+ 
+Markdown使用说明：https://www.appinn.com/markdown/ 
 
 # Python/Python2
  
@@ -1187,11 +1197,11 @@ cat ~/tor/hiddenservice/hostname
 #显示的内容就是你的tor域名。
 ```
 
-# mutt
+ * mutt&alpine
  
 邮件客户端。 
  
-# busybox
+ * busybox
  
 实用linux小工具集合，默认已安装。
 
@@ -1239,11 +1249,11 @@ apt search game可以找到更多游戏！
 
 终端复用工具。
 
-# macchanger
+ * macchanger
 
 修改mac地址工具。
 
-# db
+ * db
 
 后缀名为db的数据库文件的编辑器。
 
@@ -1257,13 +1267,13 @@ apt search game可以找到更多游戏！
 
 使用SSH封装非加密服务的工具。
 
-# lynx&w3m
+ * lynx&w3m
 
 命令行下的web浏览器。
 
 坑b。
 
-# nnn
+ * nnn
 
 一款命令行文件管理器。
 
@@ -1273,7 +1283,13 @@ apt search game可以找到更多游戏！
 
 # attr
 
-# htop
+ * htop
+ 
+ * nmap
+ 
+ * hydra
+ 
+ * tsocks
 
 # [附录]编译C源码文件
 
@@ -1306,7 +1322,39 @@ README告诉我，`autoconf&&./configure&&make&&make install`四步走，就能�
 
 此文档中是对Termux用户们有用，但不包含在官方仓库中的工具
 
+[Baidupcsgo]主页：https://github.com/iikira/BaiduPCS-Go
 
+百度网盘不限速下载器 
+ 
+[you-get] 强大的视频下载器，支持全球大多数视频网站，`pip install you-get`即可安装。
+ 
+[caddy]主页：https://github.com/mholt/caddy
+
+WebUI的文件管理器。
+
+[jupyter]Web编程笔记本(然而我不会python……)
+
+[mapscii]基于cli的终端地图，Nodejs编写。npm install mapscii -s即可安装。
+
+[hexo]轻量的个人博客框架by nodejs
+
+[webui-aria2]主页：https://github.com/ziahamza/webui-aria2
+
+快速，强大，易用的多线程下载器。
+
+[zeronet]去中心化的web网络
+
+Termux安装脚本:bash <(curl https://raw.githubusercontent.com/myfreess/Mytermuxdoc/master/installer/zeronet.sh)
+
+[sqlmap]sql远程管理工具，好用！(认真)
+
+[explainshell]explainshell.com的本地版本。
+
+[SearX]拒绝追踪的自由搜索引擎。
+
+[Metasploit-framework]
+
+在Termux上安装：https://github.com/myfreess/MSFinstall
 
 
 # TERMUX_COMMON
@@ -1404,7 +1452,7 @@ python将监听8000端口，并开启一个简单的http服务器，根目录为
 
 当然了，如果你要的只是快，这样的确很好。但这样不方便整个目录的复制，python的httpserver也不太稳定。如果你经常传输文件，可以考虑一下pure-ftpd
 
-pure-ftpd的使用此处不作介绍，以下是一些ftpserver的注意事项。
+pure-ftpd的使用可见此处：https://i.linuxtoy.org/docs/guide/ch23s05.html，以下是一些ftpserver的注意事项。
 
 1.不要为ftp用户开启可写权限
 
@@ -1479,6 +1527,14 @@ mysql
 [+]Hacking
 
 https://www.anquanke.com/opensource?page=1&c=1
+
+https://github.com/ckjbug/kali-Linux-learning
+
+https://github.com/Jack-Liang/kalitools
+
+https://github.com/wizardforcel/kali-linux-cookbook-zh
+
+让我~饶罗翔老师~来教你~截图~。自己看，自己学。
 
 [附录]无名师与脚本狂
 
