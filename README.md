@@ -602,7 +602,7 @@ mkdir tmp&&cd tmp
 apt install gnupg dirmngr curl
 
 #metasploit-framework源
-curl https://Auxilus.github.io/auxilus.key
+curl -O https://Auxilus.github.io/auxilus.key
 apt-key add auxilus.key
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
 
