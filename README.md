@@ -603,7 +603,7 @@ apt install gnupg dirmngr curl
 #metasploit-framework源
 curl https://Auxilus.github.io/auxilus.key | apt-key add
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
-#目前不可用
+
 
 #mirror&&extra源
 apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
