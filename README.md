@@ -601,12 +601,6 @@ source ~/.vim/vimrc
 mkdir tmp&&cd tmp
 apt install gnupg dirmngr curl
 
-#metasploit-framework源
-curl -O https://Auxilus.github.io/auxilus.key
-apt-key add auxilus.key
-echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
-
-
 #mirror&&extra源
 apt-key adv --keyserver pool.sks-keyservers.net --recv 9D6D488416B493F0
 echo 'deb https://termux.xeffyr.ml/ stable main' >> $PREFIX/etc/apt/sources.list
