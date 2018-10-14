@@ -598,10 +598,12 @@ source ~/.vim/vimrc
  * 手动添加源
  
 ```shell
+mkdir tmp&&cd tmp
 apt install gnupg dirmngr curl
 
 #metasploit-framework源
-curl https://Auxilus.github.io/auxilus.key | apt-key add
+curl https://Auxilus.github.io/auxilus.key
+apt-key add auxilus.key
 echo "deb [arch=all] https://Auxilus.github.io/ termux extras" >> $PREFIX/etc/apt/sources.list
 
 
@@ -618,7 +620,8 @@ echo "deb https://grimler.se root stable" > $PREFIX/etc/apt/sources.list.d/termu
 apt install root-repo -y
 
 #its-pointless源
-curl https://its-pointless.github.io/pointless.gpg | apt-key add
+curl -O https://its-pointless.github.io/pointless.gpg | 
+apt-key add pointless.gpg
 mkdir $PREFIX/etc/apt/sources.list.d
 echo "deb [trusted=yes] https://its-pointless.github.io/files/ termux extras" > $PREFIX/etc/apt/sources.list.d/pointless.list
 
